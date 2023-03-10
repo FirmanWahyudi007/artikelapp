@@ -19,12 +19,22 @@ class FrontendController extends Controller
 
     public function service()
     {
-        return view('frontend.pages.service');
+        return view('frontend.pages.service.index');
+    }
+
+    public function servicedetail()
+    {
+        return view('frontend.pages.service.detail');
     }
 
     public function project()
     {
-        return view('frontend.pages.project');
+        return view('frontend.pages.project.index');
+    }
+
+    public function projectdetail()
+    {
+        return view('frontend.pages.project.detail');
     }
 
     public function blog()
@@ -32,8 +42,15 @@ class FrontendController extends Controller
         return view('frontend.pages.blog');
     }
 
+    public function blogdetail()
+    {
+        return view('frontend.pages.blog.detail');
+    }
+
     public function contact()
     {
         return view('frontend.pages.contact');
     }
+
+    
 }
