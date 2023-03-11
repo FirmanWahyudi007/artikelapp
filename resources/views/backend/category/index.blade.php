@@ -1,14 +1,14 @@
 @extends('backend.layouts.app')
-@section('title', 'Kategori')
-@section('header', 'Kategori')
+@section('title', @trans('translation.category'))
+@section('header', @trans('translation.category'))
 @section('content')
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Kategori</h4>
+                    <h4>@lang('translation.category')</h4>
                     <div class="card-header-action">
-                        <a href="{{ route('category.create') }}" class="btn btn-primary">Tambah</a>
+                        <a href="{{ route('category.create') }}" class="btn btn-primary"> @lang('translation.create')</a>
                     </div>
                 </div>
                 <div class="card-body">

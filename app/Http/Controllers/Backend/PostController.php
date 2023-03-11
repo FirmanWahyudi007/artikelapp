@@ -42,21 +42,21 @@ class PostController extends Controller
                     $btn .= '<form action="' . route('post.destroy', $row->id) . '" method="POST" class="d-inline">
                                 ' . csrf_field() . '
                                 ' . method_field('DELETE') . '
-                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm(`Anda Yakin ?`)">Delete</button>
+                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm(`Anda Yakin ?`)">' . trans('translation.delete') . '</button>
                             </form>';
                     if ($row->published == 1)
                         //with form
                         $btn .= '<form action="' . route('post.unpublish', $row->id) . '" method="POST" class="d-inline">
                                     ' . csrf_field() . '
                                     ' . method_field('PUT') . '
-                                    <button type="submit" class="btn btn-warning btn-sm" onclick="return confirm(`Anda Yakin ?`)">Unpublish</button>
+                                    <button type="submit" class="btn btn-warning btn-sm" onclick="return confirm(`Anda Yakin ?`)">' . trans('translation.unpublished') . '</button>
                                 </form>';
                     else
                         //with form
                         $btn .= '<form action="' . route('post.publish', $row->id) . '" method="POST" class="d-inline">
                                     ' . csrf_field() . '
                                     ' . method_field('PUT') . '
-                                    <button type="submit" class="btn btn-success btn-sm" onclick="return confirm(`Anda Yakin ?`)">Publish</button>
+                                    <button type="submit" class="btn btn-success btn-sm" onclick="return confirm(`Anda Yakin ?`)">' . trans('translation.published') . '</button>
                                 </form>';
 
                     return $btn;
@@ -116,9 +116,9 @@ class PostController extends Controller
         // Post::create($post);
 
         if ($post) {
-            return redirect()->route('post.index')->with('success', 'Postingan berhasil ditambahkan');
+            return redirect()->route('post.index')->with('success', trans('translation.success_message'));
         } else {
-            return redirect()->route('post.index')->with('error', 'Postingan gagal ditambahkan');
+            return redirect()->route('post.index')->with('error', trans('translation.error_message'));
         }
     }
 
@@ -173,9 +173,9 @@ class PostController extends Controller
         $post->delete();
 
         if ($post) {
-            return redirect()->route('post.index')->with('success', 'Postingan berhasil dihapus');
+            return redirect()->route('post.index')->with('success', trans('translation.success_delete_message'));
         } else {
-            return redirect()->route('post.index')->with('error', 'Postingan gagal dihapus');
+            return redirect()->route('post.index')->with('error', trans('translation.error_delete_message'));
         }
     }
 
@@ -186,9 +186,9 @@ class PostController extends Controller
         $post->save();
 
         if ($post) {
-            return redirect()->route('post.index')->with('success', 'Postingan di publikasi');
+            return redirect()->route('post.index')->with('success', trans('translation.success_publish_message'));
         } else {
-            return redirect()->route('post.index')->with('error', 'Postingan gagal di publikasi');
+            return redirect()->route('post.index')->with('error', trans('translation.error_publish_message'));
         }
     }
 
@@ -199,9 +199,9 @@ class PostController extends Controller
         $post->save();
 
         if ($post) {
-            return redirect()->route('post.index')->with('success', 'Postingan di buat draft');
+            return redirect()->route('post.index')->with('success', trans('translation.success_unpublish_message'));
         } else {
-            return redirect()->route('post.index')->with('error', 'Postingan gagal di buat draft');
+            return redirect()->route('post.index')->with('error', trans('translation.error_unpublish_message'));
         }
     }
 }

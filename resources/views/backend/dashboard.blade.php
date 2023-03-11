@@ -10,7 +10,7 @@
                 </div>
                 <div class="card-wrap">
                     <div class="card-header">
-                        <h4>Pengguna</h4>
+                        <h4>@lang('translation.users')</h4>
                     </div>
                     <div class="card-body">
                         10
@@ -25,7 +25,7 @@
                 </div>
                 <div class="card-wrap">
                     <div class="card-header">
-                        <h4>Kategori</h4>
+                        <h4>@lang('translation.category')</h4>
                     </div>
                     <div class="card-body">
                         {{ $category }}
@@ -40,7 +40,7 @@
                 </div>
                 <div class="card-wrap">
                     <div class="card-header">
-                        <h4>Postingan</h4>
+                        <h4>@lang('translation.post')</h4>
                     </div>
                     <div class="card-body">
                         10
@@ -55,7 +55,7 @@
                 </div>
                 <div class="card-wrap">
                     <div class="card-header">
-                        <h4>Gunung Lumpur</h4>
+                        <h4>@lang('translation.mud-vulcano')</h4>
                     </div>
                     <div class="card-body">
                         10

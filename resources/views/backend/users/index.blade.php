@@ -1,14 +1,14 @@
 @extends('backend.layouts.app')
-@section('title', 'Pengguna')
-@section('header', 'Pengguna')
+@section('title', @trans('translation.users'))
+@section('header', @trans('translation.users'))
 @section('content')
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Pengguna</h4>
+                    <h4>@lang('translation.users')</h4>
                     <div class="card-header-action">
-                        <a href="{{ route('users.create') }}" class="btn btn-primary">Tambah</a>
+                        <a href="{{ route('users.create') }}" class="btn btn-primary">@lang('translation.create')</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -19,7 +19,7 @@
                                     <th class="text-center">
                                         #
                                     </th>
-                                    <th>Name</th>
+                                    <th>@lang('translation.name')</th>
                                     <th>Email</th>
                                     <th>Role</th>
                                     <th>Action</th>

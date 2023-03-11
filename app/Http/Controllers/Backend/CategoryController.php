@@ -42,7 +42,7 @@ class CategoryController extends Controller
                     $btn .= '<form action="' . route('category.destroy', $row->id) . '" method="POST" class="d-inline">
                                 ' . csrf_field() . '
                                 ' . method_field('DELETE') . '
-                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm(`Anda Yakin ?`)">Delete</button>
+                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm(`Anda Yakin ?`)">' . trans('translation.delete') . '</button>
                             </form>';
                     return $btn;
                 })
@@ -80,9 +80,9 @@ class CategoryController extends Controller
 
             Category::create($category);
 
-            return redirect()->route('category.index')->with('success', 'Kategori berhasil ditambahkan');
+            return redirect()->route('category.index')->with('success', trans('translation.success_message'));
         } catch (\Exception $e) {
-            return redirect()->route('category.index')->with('error', 'Kategori gagal ditambahkan');
+            return redirect()->route('category.index')->with('error', trans('translation.error_message'));
         }
     }
 
@@ -127,9 +127,9 @@ class CategoryController extends Controller
 
             Category::where('id', $id)->update($category);
 
-            return redirect()->route('category.index')->with('success', 'Kategori berhasil diubah');
+            return redirect()->route('category.index')->with('success', trans('translation.success_update_message'));
         } catch (\Exception $e) {
-            return redirect()->route('category.index')->with('error', 'Kategori gagal diubah');
+            return redirect()->route('category.index')->with('error', trans('translation.error_update_message'));
         }
     }
 
@@ -143,9 +143,9 @@ class CategoryController extends Controller
     {
         try {
             Category::destroy($id);
-            return redirect()->route('category.index')->with('success', 'Kategori berhasil dihapus');
+            return redirect()->route('category.index')->with('success', trans('translation.success_delete_message'));
         } catch (\Exception $e) {
-            return redirect()->route('category.index')->with('error', 'Kategori gagal dihapus');
+            return redirect()->route('category.index')->with('error', trans('translation.error_delete_message'));
         }
     }
 }
