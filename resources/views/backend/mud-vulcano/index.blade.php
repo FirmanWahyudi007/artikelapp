@@ -1,12 +1,15 @@
 @extends('backend.layouts.app')
-@section('title', 'Mud Vulcano')
-@section('header', 'Mud Vulcano')
+@section('title', 'Gunung Lumpur')
+@section('header', 'Gunung Lumpur')
 @section('content')
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Daftar Mud Vulcano</h4>
+                    <h4>Daftar Gunung Lumpur</h4>
+                    <div class="card-header-action">
+                        <a href="{{ route('category.create') }}" class="btn btn-primary">Tambah</a>
+                    </div>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">

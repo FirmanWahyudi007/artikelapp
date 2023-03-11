@@ -1,14 +1,14 @@
 @extends('backend.layouts.app')
-@section('title', 'Post')
-@section('header', 'Post')
+@section('title', @trans('translation.post'))
+@section('header', @trans('translation.post'))
 @section('content')
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Post</h4>
+                    <h4>@lang('translation.post')</h4>
                     <div class="card-header-action">
-                        <a href="{{ route('post.create') }}" class="btn btn-primary">Add Post</a>
+                        <a href="{{ route('post.create') }}" class="btn btn-primary">@lang('translation.create')</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -54,4 +54,41 @@
             </div>
         </div>
     </div>
+@endsection
+@section('script-extra')
+    <script>
+        $(document).ready(function() {
+            $('#table-1').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: "{{ route('post.index') }}",
+                columns: [{
+                        data: 'DT_RowIndex',
+                        name: 'DT_RowIndex'
+                    },
+                    {
+                        data: 'title',
+                        name: 'title'
+                    },
+                    {
+                        data: 'category.name',
+                        name: 'category.name'
+                    },
+                    {
+                        data: 'user.name',
+                        name: 'user.name'
+                    },
+                    {
+                        data: 'created_at',
+                        name: 'created_at'
+                    },
+                    {
+                        data: 'action',
+                        name: 'action'
+                    },
+                ]
+            });
+        });
+    </script>
+
 @endsection

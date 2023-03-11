@@ -29,8 +29,8 @@ class Post extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function getRouteKeyName()
+    public function setContentAttribute($value)
     {
-        return 'slug';
+        $this->attributes['content'] = $value;
     }
 }

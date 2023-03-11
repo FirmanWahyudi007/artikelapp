@@ -18,11 +18,10 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug');
             $table->string('thumbnail')->nullable();
-            $table->text('content');
+            $table->longText('content');
             $table->integer('category_id');
             $table->integer('user_id');
             $table->boolean('published')->default(false);
-            $table->softDeletes();
             $table->timestamps();
         });
     }

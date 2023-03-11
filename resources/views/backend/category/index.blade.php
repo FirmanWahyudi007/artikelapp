@@ -1,16 +1,14 @@
 @extends('backend.layouts.app')
-@section('title', 'Category')
-@section('header', 'Category')
+@section('title', @trans('translation.category'))
+@section('header', @trans('translation.category'))
 @section('content')
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Category</h4>
+                    <h4>@lang('translation.category')</h4>
                     <div class="card-header-action">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add
-                            Category
-                        </button>
+                        <a href="{{ route('category.create') }}" class="btn btn-primary"> @lang('translation.create')</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -27,58 +25,11 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- @foreach ($categories as $category)
-                                    <tr>
-                                        <td>
-                                            {{ $loop->iteration }}
-                                        </td>
-                                        <td>{{ $category->name }}</td>
-                                        <td>{{ $category->slug }}</td>
-                                        <td>
-                                            <a href="{{ route('category.edit', $category->id) }}"
-                                                class="btn btn-primary">Edit</a>
-                                            <form action="{{ route('category.destroy', $category->id) }}" method="POST"
-                                                class="d-inline">
-                                                @csrf
-                                                @method('delete')
-                                                <button type="submit" class="btn btn-danger">Delete</button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach --}}
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-@endsection
-@section('modal')
-
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <form>
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label>Name</label>
-                            <input type="text" class="form-control" placeholder="Name Category" name="name">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save</button>
-                    </div>
-                </div>
-            </form>
         </div>
     </div>
 @endsection
@@ -106,9 +57,6 @@
                         name: 'action'
                     },
                 ]
-            });
-            $('#modal-add').on('click', function() {
-                $('#modal-add').modal('show');
             });
         });
     </script>
