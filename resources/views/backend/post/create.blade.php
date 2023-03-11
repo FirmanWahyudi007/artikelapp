@@ -15,28 +15,39 @@
                     <h4>Add Post</h4>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('post.store') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ isset($post) ? route('post.update', $post->id) : route('post.store') }}" method="post"
+                        enctype="multipart/form-data">
                         {!! csrf_field() !!}
+                        {{ isset($post) ? method_field('PUT') : '' }}
                         <div class="form-group row mb-4">
-                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Title</label>
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Judul</label>
                             <div class="col-sm-12 col-md-7">
-                                <input type="text" class="form-control" name="title">
+                                <input type="text" class="form-control" name="title" value="{{ $post->title ?? '' }}">
                             </div>
                         </div>
                         <div class="form-group row mb-4">
-                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Category</label>
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Kategori</label>
                             <div class="col-sm-12 col-md-7">
                                 <select class="form-control selectric" name="category">
-                                    <option>Tech</option>
-                                    <option>News</option>
-                                    <option>Political</option>
+                                    <option value="">Pilih Kategori</option>
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}"
+                                            {{ isset($post) && $post->category_id == $category->id ? 'selected' : '' }}>
+                                            {{ $category->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row mb-4">
-                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Content</label>
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Sampul</label>
                             <div class="col-sm-12 col-md-7">
-                                <textarea class="summernote" name="content"></textarea>
+                                <input type="file" class="form-control" name="thumbnail" accept="image/*">
+                            </div>
+                        </div>
+                        <div class="form-group row mb-4">
+                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Konten</label>
+                            <div class="col-sm-12 col-md-7">
+                                <textarea class="summernote" name="content">{{ $post->content ?? '' }}</textarea>
                             </div>
                         </div>
                         <div class="form-group row mb-4">

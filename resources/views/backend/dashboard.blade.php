@@ -10,10 +10,25 @@
                 </div>
                 <div class="card-wrap">
                     <div class="card-header">
-                        <h4>Total Users</h4>
+                        <h4>Pengguna</h4>
                     </div>
                     <div class="card-body">
                         10
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+            <div class="card card-statistic-1">
+                <div class="card-icon bg-secondary">
+                    <i class="fas fa-list"></i>
+                </div>
+                <div class="card-wrap">
+                    <div class="card-header">
+                        <h4>Kategori</h4>
+                    </div>
+                    <div class="card-body">
+                        {{ $category }}
                     </div>
                 </div>
             </div>
@@ -25,7 +40,7 @@
                 </div>
                 <div class="card-wrap">
                     <div class="card-header">
-                        <h4>Total Post</h4>
+                        <h4>Postingan</h4>
                     </div>
                     <div class="card-body">
                         10
@@ -40,7 +55,7 @@
                 </div>
                 <div class="card-wrap">
                     <div class="card-header">
-                        <h4>Total Admin</h4>
+                        <h4>Gunung Lumpur</h4>
                     </div>
                     <div class="card-body">
                         10

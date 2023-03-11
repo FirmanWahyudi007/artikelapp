@@ -1,14 +1,14 @@
 @extends('backend.layouts.app')
-@section('title', 'Post')
-@section('header', 'Post')
+@section('title', 'Postingan')
+@section('header', 'Postingan')
 @section('content')
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Post</h4>
+                    <h4>Postingan</h4>
                     <div class="card-header-action">
-                        <a href="{{ route('post.create') }}" class="btn btn-primary">Add Post</a>
+                        <a href="{{ route('post.create') }}" class="btn btn-primary">Tambah</a>
                     </div>
                 </div>
                 <div class="card-body">

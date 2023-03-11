@@ -2,11 +2,27 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            if (session('success')) {
+                Alert::success(session('success'));
+            }
+
+            if (session('error')) {
+                Alert::error(session('error'));
+            }
+
+            return $next($request);
+        });
+    }
     /**
      * Display a listing of the resource.
      *
@@ -24,7 +40,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('backend.post.create');
+        $categories = Category::all();
+        return view('backend.post.create', compact('categories'));
     }
 
     /**

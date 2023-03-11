@@ -1,11 +1,12 @@
 @include('backend.layouts.header')
 
 <body>
+    @include('sweetalert::alert')
     <div id="app">
         <div class="main-wrapper main-wrapper-1">
             <div class="navbar-bg"></div>
-            @include('backend.components.navbar')
-            @include('backend.components.sidebar')
+            @include('backend.layouts.navbar')
+            @include('backend.layouts.sidebar')
 
             <!-- Main Content -->
             <div class="main-content">
@@ -20,7 +21,7 @@
                 </section>
             </div>
             @yield('modal')
-            @include('backend.components.footer')
+            @include('backend.layouts.footer')
         </div>
     </div>
 </body>

@@ -1,14 +1,14 @@
 @extends('backend.layouts.app')
-@section('title', 'Users')
-@section('header', 'Users')
+@section('title', 'Pengguna')
+@section('header', 'Pengguna')
 @section('content')
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Users</h4>
+                    <h4>Pengguna</h4>
                     <div class="card-header-action">
-                        <a href="{{ route('users.create') }}" class="btn btn-primary">Add User</a>
+                        <a href="{{ route('users.create') }}" class="btn btn-primary">Tambah</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -26,25 +26,6 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- @foreach ($users as $user)
-                                    <tr>
-                                        <td>
-                                            {{ $loop->iteration }}
-                                        </td>
-                                        <td>{{ $user->name }}</td>
-                                        <td>{{ $user->email }}</td>
-                                        <td>{{ $user->role }}</td>
-                                        <td>
-                                            <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary">Edit</a>
-                                            <form action="{{ route('users.destroy', $user->id) }}" method="POST"
-                                                class="d-inline">
-                                                @csrf
-                                                @method('delete')
-                                                <button type="submit" class="btn btn-danger">Delete</button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach --}}
                             </tbody>
                         </table>
                     </div>
@@ -52,4 +33,39 @@
             </div>
         </div>
     </div>
+@endsection
+@section('script-extra')
+    <script>
+        $(document).ready(function() {
+            $('#table-1').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: "{{ route('users.index') }}",
+                columns: [{
+                        data: 'DT_RowIndex',
+                        name: 'DT_RowIndex'
+                    },
+                    {
+                        data: 'name',
+                        name: 'name'
+                    },
+                    {
+                        data: 'email',
+                        name: 'email'
+                    },
+                    {
+                        data: 'role',
+                        name: 'role'
+                    },
+                    {
+                        data: 'action',
+                        name: 'action'
+                    },
+                ]
+            });
+            $('#modal-add').on('click', function() {
+                $('#modal-add').modal('show');
+            });
+        });
+    </script>
 @endsection
