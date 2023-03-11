@@ -1,14 +1,14 @@
 @extends('backend.layouts.app')
-@section('title', 'Gunung Lumpur')
-@section('header', 'Gunung Lumpur')
+@section('title', @trans('translation.mud-vulcano'))
+@section('header', @trans('translation.mud-vulcano'))
 @section('content')
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Daftar Gunung Lumpur</h4>
+                    <h4>@lang('translation.mud-vulcano')</h4>
                     <div class="card-header-action">
-                        <a href="{{ route('category.create') }}" class="btn btn-primary">Tambah</a>
+                        <a href="{{ route('category.create') }}" class="btn btn-primary">@lang('translation.create')</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -19,12 +19,12 @@
                                     <th class="text-center">
                                         #
                                     </th>
-                                    <th>Nama</th>
-                                    <th>Alamat</th>
-                                    <th>Latitude</th>
-                                    <th>Longitude</th>
-                                    <th>Deskripsi</th>
-                                    <th>Action</th>
+                                    <th>@lang('translation.name')</th>
+                                    <th>@lang('translation.address')</th>
+                                    <th>@lang('translation.coordinates')</th>
+                                    <th>@lang('translation.author')</th>
+                                    <th>@lang('translation.description')</th>
+                                    <th>@lang('translation.action')</th>
                                 </tr>
                             </thead>
                             <tbody>

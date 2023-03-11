@@ -19,11 +19,11 @@
                                     <th class="text-center">
                                         #
                                     </th>
-                                    <th>Title</th>
-                                    <th>Category</th>
-                                    <th>Author</th>
-                                    <th>Created At</th>
-                                    <th>Action</th>
+                                    <th>@lang('translation.title')</th>
+                                    <th>@lang('translation.category')</th>
+                                    <th>@lang('translation.author')</th>
+                                    <th>@lang('translation.created_at')</th>
+                                    <th>@lang('translation.action')</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -80,7 +80,10 @@
                     },
                     {
                         data: 'created_at',
-                        name: 'created_at'
+                        name: 'created_at',
+                        render: function(data) {
+                            return moment(data).format('DD MMMM YYYY');
+                        }
                     },
                     {
                         data: 'action',
