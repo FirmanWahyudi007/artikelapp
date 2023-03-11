@@ -104,7 +104,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('backend.users.create', compact('user'));
     }
 
     /**
@@ -116,7 +117,23 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $user = [
+                'name' => $request->name,
+                'email' => $request->email,
+                'role' => $request->role,
+                'updated_at' => now()
+            ];
+
+            if ($request->password) {
+                $user['password'] = $request->password;
+            }
+
+            User::where('id', $id)->update($user);
+            return redirect()->route('users.index')->with('success', 'Pengguna berhasil diubah');
+        } catch (\Exception $e) {
+            return redirect()->route('users.index')->with('error', 'Pengguna gagal diubah');
+        }
     }
 
     /**

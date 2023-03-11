@@ -29,4 +29,6 @@ Route::prefix('admin')->group(function () {
     Route::resource('users', UserController::class);
     Route::resource('mud-vulcano', MudVulcanoController::class);
     Route::resource('post', PostController::class);
+    Route::put('post/publish/{id}', [PostController::class, 'publish'])->name('post.publish');
+    Route::put('post/unpublish/{id}', [PostController::class, 'unpublish'])->name('post.unpublish');
 });

@@ -55,3 +55,40 @@
         </div>
     </div>
 @endsection
+@section('script-extra')
+    <script>
+        $(document).ready(function() {
+            $('#table-1').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: "{{ route('post.index') }}",
+                columns: [{
+                        data: 'DT_RowIndex',
+                        name: 'DT_RowIndex'
+                    },
+                    {
+                        data: 'title',
+                        name: 'title'
+                    },
+                    {
+                        data: 'category.name',
+                        name: 'category.name'
+                    },
+                    {
+                        data: 'user.name',
+                        name: 'user.name'
+                    },
+                    {
+                        data: 'created_at',
+                        name: 'created_at'
+                    },
+                    {
+                        data: 'action',
+                        name: 'action'
+                    },
+                ]
+            });
+        });
+    </script>
+
+@endsection

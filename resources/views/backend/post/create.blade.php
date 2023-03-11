@@ -22,13 +22,14 @@
                         <div class="form-group row mb-4">
                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Judul</label>
                             <div class="col-sm-12 col-md-7">
-                                <input type="text" class="form-control" name="title" value="{{ $post->title ?? '' }}">
+                                <input type="text" class="form-control" name="title" value="{{ $post->title ?? '' }}"
+                                    required>
                             </div>
                         </div>
                         <div class="form-group row mb-4">
                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Kategori</label>
                             <div class="col-sm-12 col-md-7">
-                                <select class="form-control selectric" name="category">
+                                <select class="form-control selectric" name="category_id" required>
                                     <option value="">Pilih Kategori</option>
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->id }}"
@@ -41,7 +42,8 @@
                         <div class="form-group row mb-4">
                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Sampul</label>
                             <div class="col-sm-12 col-md-7">
-                                <input type="file" class="form-control" name="thumbnail" accept="image/*">
+                                <input type="file" class="form-control" name="thumbnail" accept="image/*"
+                                    {{ isset($post) ? '' : 'required' }}>
                             </div>
                         </div>
                         <div class="form-group row mb-4">
