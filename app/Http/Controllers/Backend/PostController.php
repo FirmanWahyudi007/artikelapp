@@ -155,7 +155,31 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $data = [
+                'title' => $request->title,
+                'slug' => Str::slug($request->title),
+                'user_id' => 1,
+                'category_id' => $request->category_id,
+                'content' => $request->content,
+                'updated_at' => now(),
+            ];
+            $post = Post::find($id);
+            if ($request->file('thumbnail')) {
+                if ($post->thumbnail) {
+                    unlink(public_path($post->thumbnail));
+                }
+                $image = $request->file('thumbnail');
+                $new_name = rand() . '.' . $image->getClientOriginalExtension();
+                $image->move(public_path('img\post'), $new_name);
+                $data['thumbnail'] = 'img/post/' . $new_name;
+            }
+            $post->update($data);
+
+            return redirect()->route('post.index')->with('success', trans('translation.success_update_message'));
+        } catch (\Exception $e) {
+            return redirect()->route('post.index')->with('error', trans('translation.error_update_message'));
+        }
     }
 
     /**
