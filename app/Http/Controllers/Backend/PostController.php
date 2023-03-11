@@ -141,7 +141,9 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+        $categories = Category::all();
+        return view('backend.post.create', compact('post', 'categories'));
     }
 
     /**
@@ -165,10 +167,8 @@ class PostController extends Controller
     public function destroy($id)
     {
         $post = Post::find($id);
-        //check ada gambar atau tidak
         if ($post->thumbnail) {
-            //hapus gambar
-            unlink(public_path('img/post/' . $post->thumbnail));
+            unlink(public_path($post->thumbnail));
         }
         $post->delete();
 
