@@ -1,12 +1,15 @@
 <?php
 
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Backend\MudVulcanoController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,16 +22,17 @@ use App\Http\Controllers\Backend\MudVulcanoController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
-Route::resource('category', CategoryController::class);
-Route::resource('users', UserController::class);
-Route::resource('mud-vulcano', MudVulcanoController::class);
-Route::resource('post', PostController::class);
+Route::prefix('admin')->group(function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('category', CategoryController::class);
+    Route::resource('users', UserController::class);
+    Route::resource('mud-vulcano', MudVulcanoController::class);
+    Route::resource('post', PostController::class);
+    Route::put('post/publish/{id}', [PostController::class, 'publish'])->name('post.publish');
+    Route::put('post/unpublish/{id}', [PostController::class, 'unpublish'])->name('post.unpublish');
+});
+Route::get('{locale}', [HomeController::class, 'lang'])->name('lang');
 
 Route::get('/', [FrontendController::class, 'index'])->name('home');
 Route::get('/about', [FrontendController::class, 'about'])->name('about');
