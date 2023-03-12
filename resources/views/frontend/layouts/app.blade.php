@@ -1,20 +1,21 @@
 @include('frontend.layouts.header')
 
 <body>
+    @include('sweetalert::alert')
 
-  <!-- ======= Header ======= -->
-@include('frontend.components.navbar')
-  <!-- End Header -->
+    <!-- ======= Header ======= -->
+    @include('frontend.components.navbar')
+    <!-- End Header -->
 
- @yield('content')
+    @yield('content')
 
-  <!-- ======= Footer ======= -->
-@include('frontend.components.footer')
-  <!-- End Footer -->
+    <!-- ======= Footer ======= -->
+    @include('frontend.components.footer')
+    <!-- End Footer -->
 
-  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i
-      class="bi bi-arrow-up-short"></i></a>
+    <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
 
-  <div id="preloader"></div>
+    <div id="preloader"></div>
 
-@include('frontend.layouts.script')
+    @include('frontend.layouts.script')

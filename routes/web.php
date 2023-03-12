@@ -32,7 +32,7 @@ Route::prefix('admin')->group(function () {
     Route::put('post/publish/{id}', [PostController::class, 'publish'])->name('post.publish');
     Route::put('post/unpublish/{id}', [PostController::class, 'unpublish'])->name('post.unpublish');
 });
-Route::get('{locale}', [HomeController::class, 'lang'])->name('lang');
+Route::get('/lang/{locale}', [HomeController::class, 'lang'])->name('lang');
 
 Route::get('/', [FrontendController::class, 'index'])->name('home');
 Route::get('/about', [FrontendController::class, 'about'])->name('about');
