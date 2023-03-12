@@ -12,7 +12,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Add Post</h4>
+                    <h4>@lang('translation.create') @lang('translation.post')</h4>
                 </div>
                 <div class="card-body">
                     <form action="{{ isset($post) ? route('post.update', $post->id) : route('post.store') }}" method="post"

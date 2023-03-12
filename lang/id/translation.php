@@ -2,6 +2,7 @@
 
 //translation.php
 return [
+    'images' => 'Gambar',
     'dashboard' => 'Dashboard',
     'category' => 'Kategori',
     'users' => 'Pengguna',

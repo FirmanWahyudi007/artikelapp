@@ -2,6 +2,7 @@
 
 //translation.php
 return [
+    'images' => 'Images',
     'dashboard' => 'Dashboard',
     'category' => 'Category',
     'users' => 'Users',

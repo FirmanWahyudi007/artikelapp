@@ -8,7 +8,7 @@
                 <div class="card-header">
                     <h4>@lang('translation.mud-vulcano')</h4>
                     <div class="card-header-action">
-                        <a href="{{ route('category.create') }}" class="btn btn-primary">@lang('translation.create')</a>
+                        <a href="{{ route('mud-vulcano.create') }}" class="btn btn-primary">@lang('translation.create')</a>
                     </div>
                 </div>
                 <div class="card-body">

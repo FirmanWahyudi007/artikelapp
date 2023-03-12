@@ -24,7 +24,7 @@ class MudVulcanoController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.mud-vulcano.create');
     }
 
     /**
