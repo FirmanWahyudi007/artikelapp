@@ -28,8 +28,8 @@
 
 
                 <div class=" section-header">
-                    <h2>Recent Blog Posts</h2>
-                    <p>In commodi voluptatem excepturi quaerat nihil error autem voluptate ut et officia consequuntu</p>
+                    <h2>Postingan Terbaru</h2>
+                    {{-- <p>In commodi voluptatem excepturi quaerat nihil error autem voluptate ut et officia consequuntu</p> --}}
                 </div>
 
                 <div class="row gy-5">
@@ -61,7 +61,8 @@
 
                                     <hr>
 
-                                    <a href="/blog-detail/{{ $data->slug }}" class="readmore stretched-link"><span>Read
+                                    <a href="/postingan-detail/{{ $data->slug }}"
+                                        class="readmore stretched-link"><span>Read
                                             More</span><i class="bi bi-arrow-right"></i></a>
 
                                 </div>
@@ -872,20 +873,19 @@
     <script src="https://cdn.plyr.io/3.7.7/plyr.polyfilled.js"></script>
     <script>
         const player = new Plyr('#player', {
-            autoplay: true,
-            muted: true,
-            volume: 0,
+            // autoplay: true,
+            // muted: false,
             loop: {
                 active: true
             },
-            disableContextMenu: true,
-            controls: [],
-            clickToPlay: false,
+            // disableContextMenu: true,
+            // controls: [],
+            // clickToPlay: true,
             // autoplay: true
         });
-        player.on('ready', () => {
-            player.play();
-        })
+        // player.on('ready', () => {
+        //     player.play();
+        // })
         window.player = player;
     </script>
 @endpush

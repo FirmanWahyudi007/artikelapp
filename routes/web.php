@@ -47,5 +47,5 @@ Route::get('/service-detail', [FrontendController::class, 'servicedetail']);
 Route::get('/project', [FrontendController::class, 'project'])->name('project');
 Route::get('/project-detail', [FrontendController::class, 'projectdetail']);
 Route::get('/blog', [FrontendController::class, 'blog'])->name('blog');
-Route::get('/blog-detail', [FrontendController::class, 'blogdetail']);
+Route::get('/postingan-detail/{slug}', [FrontendController::class, 'postdetail']);
 Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
