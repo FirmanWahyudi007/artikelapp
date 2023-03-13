@@ -3,13 +3,19 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
 {
     public function index()
     {
-        return view('frontend.pages.home');
+        $get_data_post = Post::with(['category', 'user'])->where('published', 1)->InRandomOrder()->limit(3)->get();
+        // return $get_data_post;
+
+        return view('frontend.pages.home', [
+            'data_post' => $get_data_post
+        ]);
     }
 
     public function about()
@@ -39,7 +45,7 @@ class FrontendController extends Controller
 
     public function blog()
     {
-        return view('frontend.pages.blog');
+        return view('frontend.pages.blog.index');
     }
 
     public function blogdetail()
@@ -51,6 +57,4 @@ class FrontendController extends Controller
     {
         return view('frontend.pages.contact');
     }
-
-    
 }

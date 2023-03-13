@@ -10,6 +10,8 @@
   <!-- Template Main JS File -->
   <script src="{{ asset('assets/frontend/assets/js/main.js') }}"></script>
 
-</body>
+  @stack('child-script');
 
-</html>
+  </body>
+
+  </html>
