@@ -4,13 +4,13 @@
 
         <!-- ======= Breadcrumbs ======= -->
         <div class="breadcrumbs d-flex align-items-center"
-            style="background-image: url('{{ asset('assets/frontend/assets/img/breadcrumbs-bg.jpg') }}');">
+            style="background-image: url('{{ asset('assets/frontend/new-image/2.jpg') }}');">
             <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
 
-                <h2>Detail Postingan</h2>
+                <h2>Postingan</h2>
                 <ol>
                     <li><a href="{{ route('home') }}">Home</a></li>
-                    <li>Post Details</li>
+                    <li>Postingan</li>
                 </ol>
 
             </div>
@@ -276,15 +276,6 @@
                     <div class="col-lg-4">
 
                         <div class="sidebar">
-
-                            <div class="sidebar-item search-form">
-                                <h3 class="sidebar-title">Search</h3>
-                                <form action="" class="mt-3">
-                                    <input type="text">
-                                    <button type="submit"><i class="bi bi-search"></i></button>
-                                </form>
-                            </div><!-- End sidebar search formn-->
-
                             <div class="sidebar-item categories">
                                 <h3 class="sidebar-title">Categories</h3>
                                 <ul class="mt-3">
@@ -316,23 +307,6 @@
                                 </div>
 
                             </div><!-- End sidebar recent posts-->
-
-                            <div class="sidebar-item tags">
-                                <h3 class="sidebar-title">Tags</h3>
-                                <ul class="mt-3">
-                                    <li><a href="#">App</a></li>
-                                    <li><a href="#">IT</a></li>
-                                    <li><a href="#">Business</a></li>
-                                    <li><a href="#">Mac</a></li>
-                                    <li><a href="#">Design</a></li>
-                                    <li><a href="#">Office</a></li>
-                                    <li><a href="#">Creative</a></li>
-                                    <li><a href="#">Studio</a></li>
-                                    <li><a href="#">Smart</a></li>
-                                    <li><a href="#">Tips</a></li>
-                                    <li><a href="#">Marketing</a></li>
-                                </ul>
-                            </div><!-- End sidebar tags-->
 
                         </div><!-- End Blog Sidebar -->
 

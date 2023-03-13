@@ -50,7 +50,7 @@ class FrontendController extends Controller
     public function postdetail(string $slug)
     {
         $get_post_detail = Post::with(['category', 'user'])->where('slug', $slug)->first();
-        $recent_post = Post::orderBy('id', 'desc')->limit(5)->get();
+        $recent_post = Post::orderBy('id', 'desc')->limit(3)->get();
         // dd($recent_post);
 
         return view('frontend.pages.blog.detail', [
