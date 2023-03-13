@@ -1,14 +1,16 @@
 @extends('backend.layouts.app')
-@section('title', @trans('translation.post'))
-@section('header', @trans('translation.post'))
+@section('title', @trans('translation.mud-vulcano-images'))
+@section('header', @trans('translation.mud-vulcano-images'))
 @section('content')
     <div class="row">
-        <div class="col-12">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>@lang('translation.post')</h4>
+                    <h4>@lang('translation.mud-vulcano-images')</h4>
                     <div class="card-header-action">
-                        <a href="{{ route('post.create') }}" class="btn btn-primary">@lang('translation.create')</a>
+                        <a href="{{ route('mud-vulcano.images.create', request()->route('id')) }}"
+                            class="btn btn-primary">@lang('translation.create')</a>
+                        <a href="{{ route('mud-vulcano.index') }}" class="btn btn-secondary">@lang('translation.back')</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -19,27 +21,26 @@
                                     <th class="text-center">
                                         #
                                     </th>
-                                    <th>@lang('translation.title')</th>
-                                    <th>@lang('translation.category')</th>
-                                    <th>@lang('translation.author')</th>
-                                    <th>@lang('translation.created_at')</th>
+                                    <th>@lang('translation.images')</th>
                                     <th>@lang('translation.action')</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- @foreach ($posts as $post)
+                                {{-- @foreach ($mud_vulcanos as $mud_vulcano)
                                     <tr>
                                         <td>
                                             {{ $loop->iteration }}
                                         </td>
-                                        <td>{{ $post->title }}</td>
-                                        <td>{{ $post->category->name }}</td>
-                                        <td>{{ $post->user->name }}</td>
-                                        <td>{{ $post->created_at }}</td>
+                                        <td>{{ $mud_vulcano->nama }}</td>
+                                        <td>{{ $mud_vulcano->alamat }}</td>
+                                        <td>{{ $mud_vulcano->latitude }}</td>
+                                        <td>{{ $mud_vulcano->longitude }}</td>
+                                        <td>{{ $mud_vulcano->deskripsi }}</td>
                                         <td>
-                                            <a href="{{ route('post.edit', $post->id) }}" class="btn btn-primary">Edit</a>
-                                            <form action="{{ route('post.destroy', $post->id) }}" method="POST"
-                                                class="d-inline">
+                                            <a href="{{ route('mud_vulcano.edit', $mud_vulcano->id) }}"
+                                                class="btn btn-primary">Edit</a>
+                                            <form action="{{ route('mud_vulcano.destroy', $mud_vulcano->id) }}"
+                                                method="POST" class="d-inline">
                                                 @csrf
                                                 @method('delete')
                                                 <button type="submit" class="btn btn-danger">Delete</button>
@@ -61,29 +62,14 @@
             $('#table-1').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('post.index') }}",
+                ajax: "{{ route('mud-vulcano.images', request()->route('id')) }}",
                 columns: [{
                         data: 'DT_RowIndex',
                         name: 'DT_RowIndex'
                     },
                     {
-                        data: 'title',
-                        name: 'title'
-                    },
-                    {
-                        data: 'category.name',
-                        name: 'category.name'
-                    },
-                    {
-                        data: 'user.name',
-                        name: 'user.name'
-                    },
-                    {
-                        data: 'created_at',
-                        name: 'created_at',
-                        render: function(data) {
-                            return moment(data).format('DD MMMM YYYY');
-                        }
+                        data: 'thumbnail',
+                        name: 'thumbnail'
                     },
                     {
                         data: 'action',
@@ -93,5 +79,4 @@
             });
         });
     </script>
-
 @endsection

@@ -6,7 +6,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>@lang('translation.create') @lang('translation.users')</h4>
+                    <h4>{{ isset($user) ? 'Edit' : trans('translation.create') }} @lang('translation.users')</h4>
                 </div>
                 <div class="card-body">
                     <form action="{{ isset($user) ? route('users.update', $user->id) : route('users.store') }}" method="post"

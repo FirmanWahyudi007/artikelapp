@@ -19,9 +19,8 @@
                                     <th class="text-center">
                                         #
                                     </th>
-                                    <th>Name</th>
-                                    <th>Slug</th>
-                                    <th>Action</th>
+                                    <th>@lang('translation.name')</th>
+                                    <th>@lang('translation.action')</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -47,10 +46,6 @@
                     {
                         data: 'name',
                         name: 'name'
-                    },
-                    {
-                        data: 'slug',
-                        name: 'slug'
                     },
                     {
                         data: 'action',

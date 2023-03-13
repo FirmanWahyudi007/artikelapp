@@ -2,10 +2,13 @@
 
 //translation.php
 return [
+    'back' => 'Back',
+    'images' => 'Images',
     'dashboard' => 'Dashboard',
     'category' => 'Category',
     'users' => 'Users',
     'mud-vulcano' => 'Mud Vulcano',
+    'mud-vulcano-images' => 'Mud Vulcano Images',
     'post' => 'Post',
     'home' => 'Home',
     'about' => 'About',
@@ -15,6 +18,11 @@ return [
     'contact' => 'Contact',
     'title' => 'Title',
     'slug' => 'Slug',
+    'description' => 'Description',
+    'address' => 'Address',
+    'coordinates' => 'Coordinates',
+    'author' => 'Author',
+    'created_at' => 'Date',
     'select_category' => 'Select Category',
     'thumbnail' => 'Thumbnail',
     'content' => 'Content',
