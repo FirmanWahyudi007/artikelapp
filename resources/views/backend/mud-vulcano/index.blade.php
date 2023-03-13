@@ -77,8 +77,8 @@
                         name: 'address'
                     },
                     {
-                        data: 'name',
-                        name: 'name'
+                        data: 'user.name',
+                        name: 'user.name'
                     },
                     {
                         data: 'thumbnail',
