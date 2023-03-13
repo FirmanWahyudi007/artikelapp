@@ -1,14 +1,16 @@
 @extends('backend.layouts.app')
-@section('title', @trans('translation.mud-vulcano'))
-@section('header', @trans('translation.mud-vulcano'))
+@section('title', @trans('translation.mud-vulcano-images'))
+@section('header', @trans('translation.mud-vulcano-images'))
 @section('content')
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>@lang('translation.mud-vulcano')</h4>
+                    <h4>@lang('translation.mud-vulcano-images')</h4>
                     <div class="card-header-action">
-                        <a href="{{ route('mud-vulcano.create') }}" class="btn btn-primary">@lang('translation.create')</a>
+                        <a href="{{ route('mud-vulcano.images.create', request()->route('id')) }}"
+                            class="btn btn-primary">@lang('translation.create')</a>
+                        <a href="{{ route('mud-vulcano.index') }}" class="btn btn-secondary">@lang('translation.back')</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -19,10 +21,7 @@
                                     <th class="text-center">
                                         #
                                     </th>
-                                    <th>@lang('translation.name')</th>
-                                    <th>@lang('translation.address')</th>
-                                    <th>@lang('translation.author')</th>
-                                    <th>@lang('translation.thumbnail')</th>
+                                    <th>@lang('translation.images')</th>
                                     <th>@lang('translation.action')</th>
                                 </tr>
                             </thead>
@@ -63,22 +62,10 @@
             $('#table-1').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('mud-vulcano.index') }}",
+                ajax: "{{ route('mud-vulcano.images', request()->route('id')) }}",
                 columns: [{
                         data: 'DT_RowIndex',
                         name: 'DT_RowIndex'
-                    },
-                    {
-                        data: 'name',
-                        name: 'name'
-                    },
-                    {
-                        data: 'address',
-                        name: 'address'
-                    },
-                    {
-                        data: 'name',
-                        name: 'name'
                     },
                     {
                         data: 'thumbnail',

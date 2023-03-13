@@ -2,11 +2,13 @@
 
 //translation.php
 return [
+    'back' => 'Kembali',
     'images' => 'Gambar',
     'dashboard' => 'Dashboard',
     'category' => 'Kategori',
     'users' => 'Pengguna',
     'mud-vulcano' => 'Gunung Lumpur',
+    'mud-vulcano-images' => 'Gambar Gunung Lumpur',
     'post' => 'Postingan',
     'home' => 'Home',
     'about' => 'Tentang',

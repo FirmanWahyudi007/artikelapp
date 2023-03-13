@@ -2,11 +2,13 @@
 
 //translation.php
 return [
+    'back' => 'Back',
     'images' => 'Images',
     'dashboard' => 'Dashboard',
     'category' => 'Category',
     'users' => 'Users',
     'mud-vulcano' => 'Mud Vulcano',
+    'mud-vulcano-images' => 'Mud Vulcano Images',
     'post' => 'Post',
     'home' => 'Home',
     'about' => 'About',
