@@ -12,7 +12,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Add Post</h4>
+                    <h4>{{ isset($post) ? 'Edit' : trans('translation.create') }} @lang('translation.post')</h4>
                 </div>
                 <div class="card-body">
                     <form action="{{ isset($post) ? route('post.update', $post->id) : route('post.store') }}" method="post"
@@ -49,7 +49,7 @@
                         <div class="form-group row mb-4">
                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">@lang('translation.content')</label>
                             <div class="col-sm-12 col-md-7">
-                                <textarea class="summernote" name="content">{{ $post->content ?? '' }}</textarea>
+                                <textarea class="summernote" name="content">{!! $post->content ?? '' !!}</textarea>
                             </div>
                         </div>
                         <div class="form-group row mb-4">

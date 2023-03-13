@@ -40,7 +40,7 @@ class UserController extends Controller
                     $btn .= '<form action="' . route('users.destroy', $row->id) . '" method="POST" class="d-inline">
                                 ' . csrf_field() . '
                                 ' . method_field('DELETE') . '
-                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm(`Anda Yakin ?`)">Delete</button>
+                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm(`Anda Yakin ?`)">' . trans('translation.delete') . '</button>
                             </form>';
                     return $btn;
                 })
@@ -79,9 +79,9 @@ class UserController extends Controller
             ];
 
             User::create($user);
-            return redirect()->route('users.index')->with('success', 'Pengguna berhasil ditambahkan');
+            return redirect()->route('users.index')->with('success', trans('translation.success_message'));
         } catch (\Exception $e) {
-            return redirect()->route('users.index')->with('error', 'Pengguna gagal ditambahkan');
+            return redirect()->route('users.index')->with('error', trans('translation.error_message'));
         }
     }
 
@@ -130,9 +130,9 @@ class UserController extends Controller
             }
 
             User::where('id', $id)->update($user);
-            return redirect()->route('users.index')->with('success', 'Pengguna berhasil diubah');
+            return redirect()->route('users.index')->with('success', trans('translation.success_update_message'));
         } catch (\Exception $e) {
-            return redirect()->route('users.index')->with('error', 'Pengguna gagal diubah');
+            return redirect()->route('users.index')->with('error', trans('translation.success_update_message'));
         }
     }
 
@@ -146,9 +146,9 @@ class UserController extends Controller
     {
         try {
             User::destroy($id);
-            return redirect()->route('users.index')->with('success', 'Pengguna berhasil dihapus');
+            return redirect()->route('users.index')->with('success', trans('translation.success_delete_message'));
         } catch (\Exception $e) {
-            return redirect()->route('users.index')->with('error', 'Pengguna gagal dihapus');
+            return redirect()->route('users.index')->with('error', trans('translation.error_delete_message'));
         }
     }
 }

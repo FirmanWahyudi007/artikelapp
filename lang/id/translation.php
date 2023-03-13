@@ -2,10 +2,13 @@
 
 //translation.php
 return [
+    'back' => 'Kembali',
+    'images' => 'Gambar',
     'dashboard' => 'Dashboard',
     'category' => 'Kategori',
     'users' => 'Pengguna',
     'mud-vulcano' => 'Gunung Lumpur',
+    'mud-vulcano-images' => 'Gambar Gunung Lumpur',
     'post' => 'Postingan',
     'home' => 'Home',
     'about' => 'Tentang',
@@ -14,6 +17,11 @@ return [
     'contact' => 'Kontak',
     'title' => 'Judul',
     'slug' => 'Slug',
+    'description' => 'Deskripsi',
+    'address' => 'Alamat',
+    'coordinates' => 'Koordinat',
+    'author' => 'Penulis',
+    'created_at' => 'Tanggal',
     'select_category' => 'Pilih Kategori',
     'thumbnail' => 'Sampul',
     'content' => 'Konten',

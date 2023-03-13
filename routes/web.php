@@ -3,13 +3,14 @@
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Backend\MudVulcanoController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Backend\MudVulcanoImageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,11 @@ Route::prefix('admin')->group(function () {
     Route::resource('category', CategoryController::class);
     Route::resource('users', UserController::class);
     Route::resource('mud-vulcano', MudVulcanoController::class);
+    Route::get('mud-vulcano/{id}/images', [MudVulcanoImageController::class, 'index'])->name('mud-vulcano.images');
+    Route::get('mud-vulcano/{id}/images/create', [MudVulcanoImageController::class, 'create'])->name('mud-vulcano.images.create');
+    Route::post('mud-vulcano/{id}/images', [MudVulcanoImageController::class, 'store'])->name('mud-vulcano.images.store');
+    Route::delete('mud-vulcano/{id}/images', [MudVulcanoImageController::class, 'destroy'])->name('mud-vulcano.images.destroy');
+
     Route::resource('post', PostController::class);
     Route::put('post/publish/{id}', [PostController::class, 'publish'])->name('post.publish');
     Route::put('post/unpublish/{id}', [PostController::class, 'unpublish'])->name('post.unpublish');

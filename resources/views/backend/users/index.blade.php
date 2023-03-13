@@ -22,7 +22,7 @@
                                     <th>@lang('translation.name')</th>
                                     <th>Email</th>
                                     <th>Role</th>
-                                    <th>Action</th>
+                                    <th>@lang('translation.action')</th>
                                 </tr>
                             </thead>
                             <tbody>
