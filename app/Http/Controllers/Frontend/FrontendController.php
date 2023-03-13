@@ -10,8 +10,7 @@ class FrontendController extends Controller
 {
     public function index()
     {
-        $get_data_post = Post::with(['category', 'user'])->where('published', 1)->InRandomOrder()->limit(3)->get();
-        // return $get_data_post;
+        $get_data_post = Post::with(['category', 'user'])->orderBy('id', 'desc')->where('published', 1)->limit(3)->get();
 
         return view('frontend.pages.home', [
             'data_post' => $get_data_post
@@ -48,9 +47,16 @@ class FrontendController extends Controller
         return view('frontend.pages.blog.index');
     }
 
-    public function blogdetail()
+    public function postdetail(string $slug)
     {
-        return view('frontend.pages.blog.detail');
+        $get_post_detail = Post::with(['category', 'user'])->where('slug', $slug)->first();
+        $recent_post = Post::orderBy('id', 'desc')->limit(5)->get();
+        // dd($recent_post);
+
+        return view('frontend.pages.blog.detail', [
+            'detail_post' => $get_post_detail,
+            'recent_posts' => $recent_post
+        ]);
     }
 
     public function contact()
