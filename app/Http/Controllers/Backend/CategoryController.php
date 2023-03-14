@@ -33,17 +33,19 @@ class CategoryController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $categories = Category::all();
+            $categories = Category::with('posts')->get();
             return datatables()->of($categories)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
                     $btn = '<a href="' . route('category.edit', $row->id) . '" class="edit btn btn-primary btn-sm">Edit</a>';
                     //delete with form
-                    $btn .= '<form action="' . route('category.destroy', $row->id) . '" method="POST" class="d-inline">
+                    if ($row->posts->count() == 0) {
+                        $btn .= '<form action="' . route('category.destroy', $row->id) . '" method="POST" class="d-inline">
                                 ' . csrf_field() . '
                                 ' . method_field('DELETE') . '
                                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm(`Anda Yakin ?`)">' . trans('translation.delete') . '</button>
                             </form>';
+                    }
                     return $btn;
                 })
                 ->rawColumns(['action'])

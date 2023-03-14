@@ -13,7 +13,7 @@
                         <h4>@lang('translation.users')</h4>
                     </div>
                     <div class="card-body">
-                        10
+                        {{ $user }}
                     </div>
                 </div>
             </div>
@@ -43,7 +43,7 @@
                         <h4>@lang('translation.post')</h4>
                     </div>
                     <div class="card-body">
-                        10
+                        {{ $post }}
                     </div>
                 </div>
             </div>
@@ -58,7 +58,7 @@
                         <h4>@lang('translation.mud-vulcano')</h4>
                     </div>
                     <div class="card-body">
-                        10
+                        {{ $vulcano }}
                     </div>
                 </div>
             </div>

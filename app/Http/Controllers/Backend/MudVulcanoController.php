@@ -48,7 +48,7 @@ class MudVulcanoController extends Controller
                     return $button;
                 })
                 ->addColumn('thumbnail', function ($mud) {
-                    $img = '<img src="' . asset('img/vulcano/thumbnail/' . $mud->thumbnail) . '" width="100px" height="100px">';
+                    $img = '<img src="' . asset($mud->thumbnail) . '" width="100px" height="100px">';
                     return $img;
                 })
                 ->rawColumns(['action', 'thumbnail'])
@@ -92,7 +92,7 @@ class MudVulcanoController extends Controller
                 'address' => $request->address,
                 'latitude' => $request->latitude,
                 'longitude' => $request->longitude,
-                'thumbnail' => $new_name,
+                'thumbnail' => 'img/vulcano/thumbnail/' . $new_name,
                 'created_at' => now(),
                 'updated_at' => now()
             ];
@@ -107,7 +107,7 @@ class MudVulcanoController extends Controller
 
                 $data = [
                     'mud_vulcano_id' => $mud,
-                    'path_image' => $new_name,
+                    'path_image' => 'img/vulcano/images/' . $new_name,
                     'created_at' => now(),
                     'updated_at' => now()
                 ];
@@ -152,7 +152,32 @@ class MudVulcanoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $data = [
+                'name' => $request->name,
+                'slug' => Str::slug($request->name),
+                'content' => $request->content,
+                'address' => $request->address,
+                'latitude' => $request->latitude,
+                'longitude' => $request->longitude,
+                'updated_at' => now()
+            ];
+            $vulcano = MudVulcano::find($id);
+            if ($request->file('thumbnail')) {
+                if ($vulcano->thumbnail) {
+                    unlink(public_path($vulcano->thumbnail));
+                }
+                $image = $request->file('thumbnail');
+                $new_name = rand() . '.' . $image->getClientOriginalExtension();
+                $image->move(public_path('img\vulcano\thumbnail'), $new_name);
+                $data['thumbnail'] = 'img/vulcano/thumbnail/' . $new_name;
+            }
+            $vulcano->update($data);
+
+            return redirect()->route('mud-vulcano.index')->with('success', trans('translation.success_update_message'));
+        } catch (\Exception $e) {
+            return redirect()->route('mud-vulcano.index')->with('error', trans('translation.error_update_message'));
+        }
     }
 
     /**
@@ -166,12 +191,12 @@ class MudVulcanoController extends Controller
         try {
             $vulcano = MudVulcano::find($id)->with('images')->first();
             if ($vulcano->thumbnail) {
-                unlink(public_path('img/vulcano/thumbnail/' . $vulcano->thumbnail));
+                unlink(public_path($vulcano->thumbnail));
             }
             $imagesVulcano = MudVulcanoImage::where('mud_vulcano_id', $id)->get();
             if ($imagesVulcano) {
                 foreach ($imagesVulcano as $image) {
-                    unlink(public_path('img/vulcano/images/' . $image->path_image));
+                    unlink(public_path($image->path_image));
                 }
             }
             $vulcano->images()->delete();

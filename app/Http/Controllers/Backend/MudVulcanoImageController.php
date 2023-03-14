@@ -42,7 +42,7 @@ class MudVulcanoImageController extends Controller
                     return $button;
                 })
                 ->addColumn('thumbnail', function ($images) {
-                    $img = '<img src="' . asset('img/vulcano/images/' . $images->path_image) . '" width="100px" height="100px">';
+                    $img = '<img src="' . asset($images->path_image) . '" width="100px" height="100px">';
                     return $img;
                 })
                 ->rawColumns(['action', 'thumbnail'])
@@ -77,7 +77,7 @@ class MudVulcanoImageController extends Controller
 
             $data = [
                 'mud_vulcano_id' => $id,
-                'path_image' => $image_name,
+                'path_image' => 'img/vulcano/images/' . $image_name,
                 'created_at' => now(),
                 'updated_at' => now(),
             ];
@@ -135,7 +135,7 @@ class MudVulcanoImageController extends Controller
         try {
             $image = MudVulcanoImage::find($id);
             if ($image->path_image) {
-                unlink(public_path('img/vulcano/images/' . $image->path_image));
+                unlink(public_path($image->path_image));
             }
             $image->delete();
             return redirect()->back()->with('success', trans('translation.success_unpublish_message'));

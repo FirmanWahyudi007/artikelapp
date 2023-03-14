@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\CategoryController;
@@ -22,6 +23,9 @@ use App\Http\Controllers\Backend\MudVulcanoImageController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/login', [LoginController::class, 'login'])->name('login');
 
 Route::prefix('admin')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');

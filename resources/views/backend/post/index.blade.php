@@ -12,22 +12,21 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-striped" id="table-1">
-                            <thead>
-                                <tr>
-                                    <th class="text-center">
-                                        #
-                                    </th>
-                                    <th>@lang('translation.title')</th>
-                                    <th>@lang('translation.category')</th>
-                                    <th>@lang('translation.author')</th>
-                                    <th>@lang('translation.created_at')</th>
-                                    <th>@lang('translation.action')</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {{-- @foreach ($posts as $post)
+                    <table class="table table-striped" id="table-1">
+                        <thead>
+                            <tr>
+                                <th class="text-center">
+                                    #
+                                </th>
+                                <th>@lang('translation.title')</th>
+                                <th>@lang('translation.category')</th>
+                                <th>@lang('translation.author')</th>
+                                <th>@lang('translation.created_at')</th>
+                                <th>@lang('translation.action')</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{-- @foreach ($posts as $post)
                                     <tr>
                                         <td>
                                             {{ $loop->iteration }}
@@ -47,9 +46,8 @@
                                         </td>
                                     </tr>
                                 @endforeach --}}
-                            </tbody>
-                        </table>
-                    </div>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

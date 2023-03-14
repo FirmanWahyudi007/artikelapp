@@ -12,23 +12,21 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-striped" id="table-1">
-                            <thead>
-                                <tr>
-                                    <th class="text-center">
-                                        #
-                                    </th>
-                                    <th>@lang('translation.name')</th>
-                                    <th>Email</th>
-                                    <th>Role</th>
-                                    <th>@lang('translation.action')</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div>
+                    <table class="table table-striped" id="table-1">
+                        <thead>
+                            <tr>
+                                <th class="text-center">
+                                    #
+                                </th>
+                                <th>@lang('translation.name')</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>@lang('translation.action')</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
