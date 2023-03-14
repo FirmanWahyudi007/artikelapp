@@ -7,10 +7,10 @@
             style="background-image: url('{{ asset('assets/frontend/new-image/2.jpg') }}');">
             <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
 
-                <h2>Postingan</h2>
+                <h2>Post</h2>
                 <ol>
                     <li><a href="{{ route('home') }}">Home</a></li>
-                    <li>Postingan</li>
+                    <li>Post Details</li>
                 </ol>
 
             </div>
@@ -35,20 +35,19 @@
                             <div class="meta-top">
                                 <ul>
                                     <li class="d-flex align-items-center"><i class="bi bi-person"></i>
-                                        <a href="blog-details.html">
-                                            {{ $detail_post->user->name }}
-                                        </a>
+                                        {{ $detail_post->user->name }}
                                     </li>
                                     <li class="d-flex align-items-center"><i class="bi bi-clock"></i>
-                                        <a href="blog-details.html">
-                                            <time datetime="2020-01-01">
-                                                {{ date('M d, y', strtotime($detail_post->created_at)) }}
-                                            </time>
-                                        </a>
+                                        {{-- <a href="blog-details.html"> --}}
+                                        <time datetime="2020-01-01">
+                                            {{ date('M d, Y', strtotime($detail_post->created_at)) }}
+                                        </time>
+                                        {{-- </a> --}}
                                     </li>
-                                    <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a
+                                    {{-- <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a
                                             href="blog-details.html">12
-                                            Comments</a></li>
+                                            Comments</a>
+                                    </li> --}}
                                 </ul>
                             </div><!-- End meta top -->
 
@@ -59,15 +58,14 @@
                             <div class="meta-bottom">
                                 <i class="bi bi-folder"></i>
                                 <ul class="cats">
-                                    <li><a href="#">Business</a></li>
+                                    <li>{{ $detail_post->category->name }}</li>
                                 </ul>
-
-                                <i class="bi bi-tags"></i>
+                                {{-- <i class="bi bi-tags"></i>
                                 <ul class="tags">
                                     <li><a href="#">Creative</a></li>
                                     <li><a href="#">Tips</a></li>
                                     <li><a href="#">Marketing</a></li>
-                                </ul>
+                                </ul> --}}
                             </div><!-- End meta bottom -->
 
                         </article><!-- End blog post -->
@@ -276,20 +274,8 @@
                     <div class="col-lg-4">
 
                         <div class="sidebar">
-                            <div class="sidebar-item categories">
-                                <h3 class="sidebar-title">Categories</h3>
-                                <ul class="mt-3">
-                                    <li><a href="#">General <span>(25)</span></a></li>
-                                    <li><a href="#">Lifestyle <span>(12)</span></a></li>
-                                    <li><a href="#">Travel <span>(5)</span></a></li>
-                                    <li><a href="#">Design <span>(22)</span></a></li>
-                                    <li><a href="#">Creative <span>(8)</span></a></li>
-                                    <li><a href="#">Educaion <span>(14)</span></a></li>
-                                </ul>
-                            </div><!-- End sidebar categories-->
-
                             <div class="sidebar-item recent-posts">
-                                <h3 class="sidebar-title">Postingan terbaru</h3>
+                                <h3 class="sidebar-title">New Post</h3>
 
                                 <div class="mt-3">
 
@@ -297,7 +283,8 @@
                                         <div class="post-item mt-3">
                                             <img src="{{ asset($post->thumbnail) }}" alt="">
                                             <div>
-                                                <h4><a href="blog-details.html">{{ $post->title }}</a></h4>
+                                                <h4><a href="/post-detail/{{ $post->slug }}">{{ $post->title }}</a>
+                                                </h4>
                                                 <time
                                                     datetime="2020-01-01">{{ date('M d, y', strtotime($detail_post->created_at)) }}</time>
                                             </div>
