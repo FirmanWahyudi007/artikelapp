@@ -46,10 +46,11 @@ Route::get('/lang/{locale}', [HomeController::class, 'lang'])->name('lang');
 
 Route::get('/', [FrontendController::class, 'index'])->name('home');
 Route::get('/about', [FrontendController::class, 'about'])->name('about');
-Route::get('/service', [FrontendController::class, 'service'])->name('service');
-Route::get('/service-detail', [FrontendController::class, 'servicedetail']);
-Route::get('/project', [FrontendController::class, 'project'])->name('project');
-Route::get('/project-detail', [FrontendController::class, 'projectdetail']);
-Route::get('/blog', [FrontendController::class, 'blog'])->name('blog');
-Route::get('/postingan-detail/{slug}', [FrontendController::class, 'postdetail']);
-Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
+Route::get('/mud-vulcano', [FrontendController::class, 'mud_vulcano'])->name('mud-vulcano');
+Route::get('/mud-vulcano-detail/{slug}', [FrontendController::class, 'mudvulcano_detail']);
+Route::get('/post', [FrontendController::class, 'post'])->name('post');
+Route::get('/post-detail/{slug}', [FrontendController::class, 'postdetail']);
+// Route::get('/project-detail', [FrontendController::class, 'projectdetail']);
+// Route::get('/blog', [FrontendController::class, 'blog'])->name('blog');
+// Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
+Route::post('/search', [FrontendController::class, 'search']);
