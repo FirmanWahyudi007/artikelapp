@@ -7,10 +7,10 @@
             style="background-image: url('{{ asset('assets/frontend/new-image/2.jpg') }}');">
             <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
 
-                <h2>Post</h2>
+                <h2>Mud Vulcano Detail</h2>
                 <ol>
                     <li><a href="{{ route('home') }}">Home</a></li>
-                    <li>Post detail</li>
+                    <li>Mud vulcano detail</li>
                 </ol>
 
             </div>
@@ -20,7 +20,7 @@
         <section id="project-details" class="project-details">
             <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-                <img src="{{ asset('img/vulcano/thumbnail/' . $detail->thumbnail) }}" alt="" class="img-fluid">
+                <img src="{{ asset($detail->thumbnail) }}" alt="" class="img-fluid">
 
                 <div class="row justify-content-between gy-4 mt-4">
 
@@ -77,8 +77,7 @@
                         @foreach ($detail->images as $data)
                             <div class="col-lg-4 col-md-6 portfolio-item filter-remodeling">
                                 <div class="portfolio-content h-100">
-                                    <img src="{{ asset('img/vulcano/images/' . $data->path_image) }}" class="img-fluid"
-                                        alt="">
+                                    <img src="{{ asset($data->path_image) }}" class="img-fluid" alt="">
                                 </div>
                             </div><!-- End Projects Item -->
                         @endforeach

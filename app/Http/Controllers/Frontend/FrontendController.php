@@ -12,10 +12,14 @@ class FrontendController extends Controller
 {
     public function index()
     {
+        $get_data_mudvulcano = MudVulcano::orderBy('id', 'desc')->limit(3)->get();
+        // dd($get_data_mudvulcano);
+
         $get_data_post = Post::with(['category', 'user'])->orderBy('id', 'desc')->where('published', 1)->limit(3)->get();
 
         return view('frontend.pages.home', [
-            'data_post' => $get_data_post
+            'data_post' => $get_data_post,
+            'data_mudvulcano' => $get_data_mudvulcano
         ]);
     }
 
