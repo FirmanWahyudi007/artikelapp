@@ -1,4 +1,5 @@
 @include('backend.layouts.header')
+@section('title', 'Login')
 
 <body>
     <div id="app">
