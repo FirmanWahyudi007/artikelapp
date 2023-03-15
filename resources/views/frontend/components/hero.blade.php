@@ -3,12 +3,13 @@
     <div class="info d-flex align-items-center">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-lg-6 text-center">
-                    <h2 data-aos="fade-down">Selamat Datang di<span> Gunung Lumpur</span></h2>
-                    <p data-aos="fade-up">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                        ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <div class="col-lg-8 text-center">
+                    <h2 data-aos="fade-down">Welcome</h2>
+                    <p data-aos="fade-up">This is the place for people to interact and share any kind of information
+                        about mud volcanoes. The other objective is to educate and familiarize the people about mud
+                        volcano mainly in Indonesia or mud volcano in the world in general. We are looking forward to
+                        some interactions among readers and contributors or constructive comments in order to enrich the
+                        content. I hope you will enjoy your journey a head…Salam gunung lumpur.</p>
                     <a data-aos="fade-up" data-aos-delay="200" href="#get-started" class="btn-get-started">Get Started</a>
                 </div>
             </div>

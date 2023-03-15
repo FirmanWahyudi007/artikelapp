@@ -50,7 +50,4 @@ Route::get('/mud-vulcano', [FrontendController::class, 'mud_vulcano'])->name('mu
 Route::get('/mud-vulcano-detail/{slug}', [FrontendController::class, 'mudvulcano_detail']);
 Route::get('/post', [FrontendController::class, 'post'])->name('post');
 Route::get('/post-detail/{slug}', [FrontendController::class, 'postdetail']);
-// Route::get('/project-detail', [FrontendController::class, 'projectdetail']);
-// Route::get('/blog', [FrontendController::class, 'blog'])->name('blog');
-// Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
 Route::post('/search', [FrontendController::class, 'search']);

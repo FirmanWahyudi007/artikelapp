@@ -8,24 +8,23 @@
                     <div class="footer-info">
                         <h3>MudVulcano</h3>
                         <p>
-                            A108 Adam Street <br>
-                            NY 535022, USA<br><br>
-                            <strong>Phone:</strong> +1 5589 55488 55<br>
-                            <strong>Email:</strong> info@example.com<br>
+                            Eri Sitinjak<br>
+                            Jl. Kolonel Masturi no.288, Parongpong, Bandung Barat<br><br>
+                            <strong>Email:</strong> erysekolah@gmail.com<br>
                         </p>
                         <div class="social-links d-flex mt-3">
-                            <a href="#" class="d-flex align-items-center justify-content-center"><i
+                            <a href="https://twitter.com/erygea" target="_blank" rel="noopener noreferrer"
+                                class="d-flex align-items-center justify-content-center"><i
                                     class="bi bi-twitter"></i></a>
-                            <a href="#" class="d-flex align-items-center justify-content-center"><i
+                            <a href="https://facebook.com/eri.s.sitinjak" target="_blank" rel="noopener noreferrer"
+                                class="d-flex align-items-center justify-content-center"><i
                                     class="bi bi-facebook"></i></a>
-                            <a href="#" class="d-flex align-items-center justify-content-center"><i
+                            <a href="https://www.instagram.com/papa_jpc/" target="_blank" rel="noopener noreferrer"
+                                class="d-flex align-items-center justify-content-center"><i
                                     class="bi bi-instagram"></i></a>
-                            <a href="#" class="d-flex align-items-center justify-content-center"><i
-                                    class="bi bi-linkedin"></i></a>
                         </div>
                     </div>
                 </div><!-- End footer info column-->
-
             </div>
         </div>
     </div>
