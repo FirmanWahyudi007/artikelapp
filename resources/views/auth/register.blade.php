@@ -77,6 +77,14 @@
                                             Please fill in your email
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        <label for="password">Password</label>
+                                        <input id="password" type="password" class="form-control" name="password"
+                                            tabindex="1" required autofocus>
+                                        <div class="invalid-feedback">
+                                            Please fill in your password
+                                        </div>
+                                    </div>
 
                                     <div class="form-divider">
                                         Your Home
@@ -120,7 +128,7 @@
 
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
-                                            Login
+                                            Register
                                         </button>
                                     </div>
                                 </form>
