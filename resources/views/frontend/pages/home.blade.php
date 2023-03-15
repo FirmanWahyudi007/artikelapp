@@ -29,7 +29,6 @@
 
                 <div class=" section-header">
                     <h2>New Post</h2>
-                    {{-- <p>In commodi voluptatem excepturi quaerat nihil error autem voluptate ut et officia consequuntu</p> --}}
                 </div>
 
                 <div class="row gy-5">
@@ -73,6 +72,41 @@
 
             </div>
         </section>
+
+        <section id="projects" class="projects">
+            <div class="container" data-aos="fade-up">
+
+                <div class=" section-header">
+                    <h2>New Mud Vulcano</h2>
+                </div>
+
+                <div class="portfolio-isotope" data-portfolio-filter="*" data-portfolio-layout="masonry"
+                    data-portfolio-sort="original-order">
+
+
+                    <div class="row gy-4 portfolio-container" data-aos="fade-up" data-aos-delay="200">
+                        @foreach ($data_mudvulcano as $data)
+                            <div class="col-lg-4 col-md-6 portfolio-item filter-remodeling">
+                                <div class="portfolio-content h-100">
+                                    <img src="{{ asset($data->thumbnail) }}" class="img-fluid" alt="">
+                                    <div class="portfolio-info">
+                                        <h4>{{ $data->name }}</h4>
+                                        <p>{{ $data->name }}</p>
+                                        <a href="{{ asset($data->thumbnail) }}"></a>
+                                        <a href="/mud-vulcano-detail/{{ $data->slug }}"
+                                            title="Detail {{ $data->name }}" class="details-link"><i
+                                                class="bi bi-link-45deg"></i></a>
+
+                                    </div>
+                                </div>
+                            </div><!-- End Projects Item -->
+                        @endforeach
+                    </div><!-- End Projects Container -->
+
+                </div>
+
+            </div>
+        </section><!-- End Our Projects Section -->
         <!-- End Recent Blog Posts Section -->
     </main><!-- End #main -->
 @endsection
@@ -82,19 +116,10 @@
     <script src="https://cdn.plyr.io/3.7.7/plyr.polyfilled.js"></script>
     <script>
         const player = new Plyr('#player', {
-            // autoplay: true,
-            // muted: false,
             loop: {
                 active: true
             },
-            // disableContextMenu: true,
-            // controls: [],
-            // clickToPlay: true,
-            // autoplay: true
         });
-        // player.on('ready', () => {
-        //     player.play();
-        // })
         window.player = player;
     </script>
 @endpush

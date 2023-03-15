@@ -26,6 +26,9 @@ class LoginController extends Controller
     //
     public function index()
     {
+        if (auth()->check()) {
+            return redirect()->route('dashboard')->with('success', trans('translation.is_login'));
+        }
         return view('auth.login');
     }
 
@@ -43,5 +46,12 @@ class LoginController extends Controller
         }
 
         return redirect()->route('login')->with('error', trans('translation.email_or_password_wrong'));
+    }
+
+    //logout
+    public function logout()
+    {
+        auth()->logout();
+        return redirect()->route('login.index')->with('success', trans('translation.success_logout_message'));
     }
 }

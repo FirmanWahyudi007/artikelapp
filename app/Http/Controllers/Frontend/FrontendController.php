@@ -12,10 +12,13 @@ class FrontendController extends Controller
 {
     public function index()
     {
+        $get_data_mudvulcano = MudVulcano::orderBy('id', 'desc')->limit(3)->get();
+
         $get_data_post = Post::with(['category', 'user'])->orderBy('id', 'desc')->where('published', 1)->limit(3)->get();
 
         return view('frontend.pages.home', [
-            'data_post' => $get_data_post
+            'data_post' => $get_data_post,
+            'data_mudvulcano' => $get_data_mudvulcano
         ]);
     }
 
@@ -27,21 +30,16 @@ class FrontendController extends Controller
     public function post()
     {
         $get_data_post = Post::orderBy('id', 'desc')->with(['category', 'user'])->where('published', 1)->simplePaginate(9);
-        // dd($get_data_post);
+
         return view('frontend.pages.post.index', [
             'posts' => $get_data_post
         ]);
     }
 
-    public function servicedetail()
-    {
-        return view('frontend.pages.service.detail');
-    }
-
     public function mud_vulcano()
     {
         $mud_volcano = MudVulcano::orderBy('id', 'desc')->get();
-        // return $mud_volcano;
+
         return view('frontend.pages.mudvulcano.index', [
             'datas' => $mud_volcano
         ]);
@@ -50,7 +48,7 @@ class FrontendController extends Controller
     public function mudvulcano_detail(string $slug)
     {
         $mud_vulcano_detail = MudVulcano::with(['images', 'user'])->where('slug', $slug)->first();
-        // return $mud_vulcano_detail;
+
         return view('frontend.pages.mudvulcano.detail', [
             'detail' => $mud_vulcano_detail
         ]);
@@ -70,11 +68,6 @@ class FrontendController extends Controller
             'detail_post' => $get_post_detail,
             'recent_posts' => $recent_post
         ]);
-    }
-
-    public function contact()
-    {
-        return view('frontend.pages.contact');
     }
 
     public function search(Request $request)

@@ -26,8 +26,18 @@
                     <a href="{{ route('about') }}"
                         class="{{ \Route::current()->getName() == 'about' ? 'active' : '' }}">About</a>
                 </li>
-                {{-- <li><a href="{{ route('contact') }}"
-                        class="{{ \Route::current()->getName() == 'contact' ? 'active' : '' }}">Contact</a></li> --}}
+                <li>
+                    @guest
+                        <a href="/login">Login</a>
+                    @endguest
+                </li>
+                {{-- <li class="dropdown"><a href="#"><span>{{ Auth::user()->name }}</span> <i
+                            class="bi bi-chevron-down dropdown-indicator"></i></a>
+                    <ul>
+                        <li><a href="#">Chart</a></li>
+                        <li><a href="{{ route('mud-vulcano') }}">Data</a></li>
+                    </ul>
+                </li> --}}
             </ul>
         </nav><!-- .navbar -->
 
