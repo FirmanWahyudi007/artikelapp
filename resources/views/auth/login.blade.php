@@ -96,14 +96,14 @@
 
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
-                                            Login
+                                            Register
                                         </button>
                                     </div>
                                 </form>
                             </div>
                         </div>
                         <div class="mt-5 text-muted text-center">
-                            Don't have an account? <a href="auth-register.html">Create One</a>
+                            Don't have an account? <a href="{{ route('register') }}">Create One</a>
                         </div>
                         <div class="simple-footer">
                             Copyright &copy; 2023
