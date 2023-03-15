@@ -38,16 +38,10 @@
                                         {{ $detail_post->user->name }}
                                     </li>
                                     <li class="d-flex align-items-center"><i class="bi bi-clock"></i>
-                                        {{-- <a href="blog-details.html"> --}}
                                         <time datetime="2020-01-01">
                                             {{ date('M d, Y', strtotime($detail_post->created_at)) }}
                                         </time>
-                                        {{-- </a> --}}
                                     </li>
-                                    {{-- <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a
-                                            href="blog-details.html">12
-                                            Comments</a>
-                                    </li> --}}
                                 </ul>
                             </div><!-- End meta top -->
 
@@ -60,12 +54,6 @@
                                 <ul class="cats">
                                     <li>{{ $detail_post->category->name }}</li>
                                 </ul>
-                                {{-- <i class="bi bi-tags"></i>
-                                <ul class="tags">
-                                    <li><a href="#">Creative</a></li>
-                                    <li><a href="#">Tips</a></li>
-                                    <li><a href="#">Marketing</a></li>
-                                </ul> --}}
                             </div><!-- End meta bottom -->
 
                         </article><!-- End blog post -->

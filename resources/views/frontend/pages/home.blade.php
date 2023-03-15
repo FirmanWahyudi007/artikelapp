@@ -29,7 +29,6 @@
 
                 <div class=" section-header">
                     <h2>New Post</h2>
-                    {{-- <p>In commodi voluptatem excepturi quaerat nihil error autem voluptate ut et officia consequuntu</p> --}}
                 </div>
 
                 <div class="row gy-5">
@@ -117,19 +116,10 @@
     <script src="https://cdn.plyr.io/3.7.7/plyr.polyfilled.js"></script>
     <script>
         const player = new Plyr('#player', {
-            // autoplay: true,
-            // muted: false,
             loop: {
                 active: true
             },
-            // disableContextMenu: true,
-            // controls: [],
-            // clickToPlay: true,
-            // autoplay: true
         });
-        // player.on('ready', () => {
-        //     player.play();
-        // })
         window.player = player;
     </script>
 @endpush
