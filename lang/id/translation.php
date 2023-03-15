@@ -65,4 +65,5 @@ return [
     'register' => 'Register',
     'logout' => 'Logout',
     'reset_password' => 'Reset Password',
+    'is_login' => 'Anda sudah login',
 ];

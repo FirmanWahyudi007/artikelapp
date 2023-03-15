@@ -67,4 +67,5 @@ return [
     'register' => 'Register',
     'logout' => 'Logout',
     'reset_password' => 'Reset Password',
+    'is_login' => 'You are logged in!',
 ];

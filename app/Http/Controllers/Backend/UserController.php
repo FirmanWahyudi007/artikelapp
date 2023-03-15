@@ -72,7 +72,7 @@ class UserController extends Controller
             $user = [
                 'name' => $request->name,
                 'email' => $request->email,
-                'password' => $request->password,
+                'password' => bcrypt($request->password),
                 'role' => $request->role,
                 'created_at' => now(),
                 'updated_at' => now()
@@ -126,7 +126,7 @@ class UserController extends Controller
             ];
 
             if ($request->password) {
-                $user['password'] = $request->password;
+                $user['password'] = bcrypt($request->password);
             }
 
             User::where('id', $id)->update($user);

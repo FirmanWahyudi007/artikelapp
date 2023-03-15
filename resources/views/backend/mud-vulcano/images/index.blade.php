@@ -14,19 +14,18 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-striped" id="table-1">
-                            <thead>
-                                <tr>
-                                    <th class="text-center">
-                                        #
-                                    </th>
-                                    <th>@lang('translation.images')</th>
-                                    <th>@lang('translation.action')</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {{-- @foreach ($mud_vulcanos as $mud_vulcano)
+                    <table class="table table-striped" id="table-1">
+                        <thead>
+                            <tr>
+                                <th class="text-center">
+                                    #
+                                </th>
+                                <th>@lang('translation.images')</th>
+                                <th>@lang('translation.action')</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{-- @foreach ($mud_vulcanos as $mud_vulcano)
                                     <tr>
                                         <td>
                                             {{ $loop->iteration }}
@@ -48,12 +47,12 @@
                                         </td>
                                     </tr>
                                 @endforeach --}}
-                            </tbody>
-                        </table>
-                    </div>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 @endsection
 @section('script-extra')

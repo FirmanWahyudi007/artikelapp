@@ -24,14 +24,18 @@ use App\Http\Controllers\Backend\MudVulcanoImageController;
 |
 */
 
-Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::get('/login', [LoginController::class, 'index'])->name('login.index');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
+//logout
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::prefix('admin')->group(function () {
+//route group middleware auth and prefix admin
+Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
+    Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::resource('category', CategoryController::class);
     Route::resource('users', UserController::class);
+    Route::resource('category', CategoryController::class);
     Route::resource('mud-vulcano', MudVulcanoController::class);
     Route::get('mud-vulcano/{id}/images', [MudVulcanoImageController::class, 'index'])->name('mud-vulcano.images');
     Route::get('mud-vulcano/{id}/images/create', [MudVulcanoImageController::class, 'create'])->name('mud-vulcano.images.create');
@@ -41,7 +45,9 @@ Route::prefix('admin')->group(function () {
     Route::resource('post', PostController::class);
     Route::put('post/publish/{id}', [PostController::class, 'publish'])->name('post.publish');
     Route::put('post/unpublish/{id}', [PostController::class, 'unpublish'])->name('post.unpublish');
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });
+
 Route::get('/lang/{locale}', [HomeController::class, 'lang'])->name('lang');
 
 Route::get('/', [FrontendController::class, 'index'])->name('home');
