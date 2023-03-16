@@ -27,15 +27,6 @@ class FrontendController extends Controller
         return view('frontend.pages.about');
     }
 
-    public function post()
-    {
-        $get_data_post = Post::orderBy('id', 'desc')->with(['category', 'user'])->where('published', 1)->simplePaginate(9);
-
-        return view('frontend.pages.post.index', [
-            'posts' => $get_data_post
-        ]);
-    }
-
     public function mud_vulcano()
     {
         $mud_volcano = MudVulcano::orderBy('id', 'desc')->get();
@@ -59,6 +50,23 @@ class FrontendController extends Controller
         return view('frontend.pages.blog.index');
     }
 
+    private function getCategory()
+    {
+        $get_data_category = Category::with('posts')->get();
+
+        return $get_data_category;
+    }
+
+    public function post()
+    {
+        $get_data_post = Post::orderBy('id', 'desc')->with(['category', 'user'])->where('published', 1)->simplePaginate(9);
+
+        return view('frontend.pages.post.index', [
+            'posts' => $get_data_post,
+            'categories' => $this->getCategory()
+        ]);
+    }
+
     public function postdetail(string $slug)
     {
         $get_post_detail = Post::with(['category', 'user'])->where('slug', $slug)->first();
@@ -80,7 +88,18 @@ class FrontendController extends Controller
         })->simplePaginate(9);
 
         return view('frontend.pages.post.index', [
-            'posts' => $get_search_post
+            'posts' => $get_search_post,
+            'categories' => $this->getCategory()
+        ]);
+    }
+
+    public function filter(int $id)
+    {
+        $get_filter_data = Post::where('category_id', $id)->where('published', 1)->simplePaginate(9);
+        // return $get_filter_data;
+        return view('frontend.pages.post.index', [
+            'posts' => $get_filter_data,
+            'categories' => $this->getCategory()
         ]);
     }
 }

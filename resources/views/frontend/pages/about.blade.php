@@ -63,7 +63,7 @@
 
                     <div class="col-lg-5 d-flex flex-column justify-content-center">
                         <h3>Mud volcano research</h3>
-                        <p>hrough surface observations using Google earth, hundreds of mud volcanoes in Indonesia (Java,
+                        <p>Through surface observations using Google earth, hundreds of mud volcanoes in Indonesia (Java,
                             Madura, Nusa Tenggara Timur, Maluku,
                             Kalimantan and Papua) have been identified, but only a few of them
                             has been observed and studied. We believe more new incoming mud volcanoes are likely to surface.
@@ -71,7 +71,7 @@
                             Tanimbar Island-Moluccas after a 7.5 magnitude earthquake on January 10, 2023. Mud volcanoes
                             in Moluccas, Papua and Kalimantan need to be given proper attention as very few works on mud
                             volcanoes in eastern Indonesia are available. In addition to active mud volcanoes, we also
-                            provide on the old
+                            provide information on the old
                             mud volcanoes in Indonesia including Sangiran and Bekucuk. Our studies and observations have led
                             us to believe
                             that there are more old mud volcanoes in Indonesia, including in Grobogan area in (Central Java,
@@ -96,7 +96,7 @@
                     <div class="col-lg-5 d-flex flex-column justify-content-center">
                         <h3>Purpose</h3>
                         <p>
-                            This website is focuses on mud volcanoes in Indonesia and updates on the
+                            This website focuses on mud volcanoes in Indonesia and updates on the
                             latest findings on mud volcanoes' behaviors, characteristics or their new surface eruption. We
                             welcome contributions from other researchers to enrich this website. We hope this website will
                             be able to help educate Indonesians to understand our mud volcanoes as well as motivating other

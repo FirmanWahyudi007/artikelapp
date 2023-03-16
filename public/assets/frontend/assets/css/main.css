@@ -1883,7 +1883,7 @@ section {
 
 .hero .carousel-item::before {
     content: "";
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.4);
     position: absolute;
     inset: 0;
 }
@@ -2311,8 +2311,8 @@ section {
 # Blog Sidebar
 --------------------------------------------------------------*/
 .blog .sidebar {
-    padding: 30px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    /* box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1); */
 }
 
 .blog .sidebar .sidebar-title {
