@@ -25,21 +25,33 @@
 
 
                     <div class="row gy-4 portfolio-container" data-aos="fade-up" data-aos-delay="200">
-                        @foreach ($datas as $data)
-                            <div class="col-lg-4 col-md-6 portfolio-item filter-remodeling">
-                                <div class="portfolio-content h-100">
-                                    <img src="{{ asset($data->thumbnail) }}" class="img-fluid" alt="">
-                                    <div class="portfolio-info">
-                                        <h4>{{ $data->name }}</h4>
-                                        <p>{{ $data->name }}</p>
-                                        <a href="{{ asset($data->thumbnail) }}"></a>
-                                        <a href="/mud-vulcano-detail/{{ $data->slug }}" title="Detail {{ $data->name }}"
-                                            class="details-link"><i class="bi bi-link-45deg"></i></a>
-
-                                    </div>
+                        {{-- @dd($datas) --}}
+                        @if (isset($datas))
+                            <div class="container" data-aos="fade-up">
+                                <div class="section-header">
+                                    <h1>Data is being processed by admin</h1>
                                 </div>
-                            </div><!-- End Projects Item -->
-                        @endforeach
+                            </div>
+                            <section id="projects" class="projects">
+                            </section><!-- End Our Projects Section -->
+                        @else
+                            @foreach ($datas as $data)
+                                <div class="col-lg-4 col-md-6 portfolio-item filter-remodeling">
+                                    <div class="portfolio-content h-100">
+                                        <img src="{{ asset($data->thumbnail) }}" class="img-fluid" alt="">
+                                        <div class="portfolio-info">
+                                            <h4>{{ $data->name }}</h4>
+                                            <p>{{ $data->name }}</p>
+                                            <a href="{{ asset($data->thumbnail) }}"></a>
+                                            <a href="/mud-vulcano-detail/{{ $data->slug }}"
+                                                title="Detail {{ $data->name }}" class="details-link"><i
+                                                    class="bi bi-link-45deg"></i></a>
+
+                                        </div>
+                                    </div>
+                                </div><!-- End Projects Item -->
+                            @endforeach
+                        @endif
                     </div><!-- End Projects Container -->
 
                 </div>

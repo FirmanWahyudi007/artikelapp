@@ -62,3 +62,4 @@ Route::get('/mud-vulcano-detail/{slug}', [FrontendController::class, 'mudvulcano
 Route::get('/post', [FrontendController::class, 'post'])->name('post');
 Route::get('/post-detail/{slug}', [FrontendController::class, 'postdetail']);
 Route::post('/search', [FrontendController::class, 'search']);
+Route::get('/filter/{id}', [FrontendController::class, 'filter']);

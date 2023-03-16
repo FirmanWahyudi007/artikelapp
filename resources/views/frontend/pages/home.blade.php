@@ -25,11 +25,12 @@
         <section id="recent-blog-posts" class="recent-blog-posts">
             <div class="container" data-aos="fade-up"">
 
-
-
-                <div class=" section-header">
-                    <h2>New Post</h2>
-                </div>
+                @if (isset($data_post))
+                @else
+                    <div class=" section-header">
+                        <h2>New Post</h2>
+                    </div>
+                @endif
 
                 <div class="row gy-5">
                     @foreach ($data_post as $data)
@@ -76,9 +77,12 @@
         <section id="projects" class="projects">
             <div class="container" data-aos="fade-up">
 
-                <div class=" section-header">
-                    <h2>New Mud Vulcano</h2>
-                </div>
+                @if (isset($data_mudvulcano))
+                @else
+                    <div class=" section-header">
+                        <h2>New Mud Vulcano</h2>
+                    </div>
+                @endif
 
                 <div class="portfolio-isotope" data-portfolio-filter="*" data-portfolio-layout="masonry"
                     data-portfolio-sort="original-order">
