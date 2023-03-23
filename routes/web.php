@@ -39,8 +39,8 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::resource('users', UserController::class)->middleware('checkRole:admin');
-    Route::resource('category', CategoryController::class)->middleware('checkRole:admin');
+    Route::resource('users', UserController::class);
+    Route::resource('category', CategoryController::class);
     Route::resource('mud-vulcano', MudVulcanoController::class);
     Route::get('mud-vulcano/{id}/images', [MudVulcanoImageController::class, 'index'])->name('mud-vulcano.images');
     Route::get('mud-vulcano/{id}/images/create', [MudVulcanoImageController::class, 'create'])->name('mud-vulcano.images.create');
