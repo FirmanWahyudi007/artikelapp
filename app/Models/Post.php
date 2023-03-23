@@ -33,4 +33,10 @@ class Post extends Model
     {
         $this->attributes['content'] = $value;
     }
+
+    //comments
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

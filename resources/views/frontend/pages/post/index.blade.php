@@ -51,7 +51,7 @@
                     </div>
                     {{-- @dd($posts) --}}
 
-                    @if (isset($posts))
+                    @if (!isset($posts))
                         <div class="section-header">
                             <h1>Data is being processed by admin</h1>
                         </div>

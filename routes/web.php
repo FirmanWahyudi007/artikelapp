@@ -39,14 +39,15 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::resource('users', UserController::class);
-    Route::resource('category', CategoryController::class);
+    Route::resource('users', UserController::class)->middleware('checkRole:admin');
+    Route::resource('category', CategoryController::class)->middleware('checkRole:admin');
     Route::resource('mud-vulcano', MudVulcanoController::class);
     Route::get('mud-vulcano/{id}/images', [MudVulcanoImageController::class, 'index'])->name('mud-vulcano.images');
     Route::get('mud-vulcano/{id}/images/create', [MudVulcanoImageController::class, 'create'])->name('mud-vulcano.images.create');
     Route::post('mud-vulcano/{id}/images', [MudVulcanoImageController::class, 'store'])->name('mud-vulcano.images.store');
     Route::delete('mud-vulcano/{id}/images', [MudVulcanoImageController::class, 'destroy'])->name('mud-vulcano.images.destroy');
-
+    Route::get('settings', [UserController::class, 'settings'])->name('profile');
+    Route::put('settings', [UserController::class, 'updateSettings'])->name('profile.update');
     Route::resource('post', PostController::class);
     Route::put('post/publish/{id}', [PostController::class, 'publish'])->name('post.publish');
     Route::put('post/unpublish/{id}', [PostController::class, 'unpublish'])->name('post.unpublish');
@@ -63,3 +64,5 @@ Route::get('/post', [FrontendController::class, 'post'])->name('post');
 Route::get('/post-detail/{slug}', [FrontendController::class, 'postdetail']);
 Route::post('/search', [FrontendController::class, 'search']);
 Route::get('/filter/{id}', [FrontendController::class, 'filter']);
+//comment
+Route::post('/comment/{id}', [FrontendController::class, 'comment'])->name('comment.store');

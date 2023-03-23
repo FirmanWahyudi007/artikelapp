@@ -16,18 +16,22 @@
                 <a href="{{ route('post.index') }}" class="nav-link"><i
                         class="fas fa-book"></i><span>@lang('translation.post')</span></a>
             </li>
-            <li class="{{ Request::is('admin/category', 'admin/category/*') ? 'active' : '' }}">
-                <a href="{{ route('category.index') }}" class="nav-link"><i
-                        class="fas fa-list"></i><span>@lang('translation.category')</span></a>
-            </li>
+            @if (auth()->user()->role == 'admin')
+                <li class="{{ Request::is('admin/category', 'admin/category/*') ? 'active' : '' }}">
+                    <a href="{{ route('category.index') }}" class="nav-link"><i
+                            class="fas fa-list"></i><span>@lang('translation.category')</span></a>
+                </li>
+            @endif
             <li class="{{ Request::is('admin/mud-vulcano', 'admin/mud-vulcano/*') ? 'active' : '' }}">
                 <a href="{{ route('mud-vulcano.index') }}" class="nav-link"><i
                         class="fas fa-mountain"></i><span>@lang('translation.mud-vulcano')</span></a>
             </li>
-            <li class="{{ Request::is('admin/users', 'admin/users/*') ? 'active' : '' }}">
-                <a href="{{ route('users.index') }}" class="nav-link"><i
-                        class="fas fa-users"></i><span>@lang('translation.users')</span></a>
-            </li>
+            @if (auth()->user()->role == 'admin')
+                <li class="{{ Request::is('admin/users', 'admin/users/*') ? 'active' : '' }}">
+                    <a href="{{ route('users.index') }}" class="nav-link"><i
+                            class="fas fa-users"></i><span>@lang('translation.users')</span></a>
+                </li>
+            @endif
         </ul>
     </aside>
 </div>
