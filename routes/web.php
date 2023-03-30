@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\CategoryController;
@@ -24,6 +25,10 @@ use App\Http\Controllers\Backend\MudVulcanoImageController;
 |
 */
 
+//register
+Route::get('/register', [RegisterController::class, 'register'])->name('register');
+Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
+
 Route::get('/login', [LoginController::class, 'index'])->name('login.index');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 //logout
@@ -41,7 +46,8 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
     Route::get('mud-vulcano/{id}/images/create', [MudVulcanoImageController::class, 'create'])->name('mud-vulcano.images.create');
     Route::post('mud-vulcano/{id}/images', [MudVulcanoImageController::class, 'store'])->name('mud-vulcano.images.store');
     Route::delete('mud-vulcano/{id}/images', [MudVulcanoImageController::class, 'destroy'])->name('mud-vulcano.images.destroy');
-
+    Route::get('settings', [UserController::class, 'settings'])->name('profile');
+    Route::put('settings', [UserController::class, 'updateSettings'])->name('profile.update');
     Route::resource('post', PostController::class);
     Route::put('post/publish/{id}', [PostController::class, 'publish'])->name('post.publish');
     Route::put('post/unpublish/{id}', [PostController::class, 'unpublish'])->name('post.unpublish');
@@ -51,9 +57,13 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
 Route::get('/lang/{locale}', [HomeController::class, 'lang'])->name('lang');
 
 Route::get('/', [FrontendController::class, 'index'])->name('home');
+Route::get('/statistik', [FrontendController::class, 'statistik'])->name('statistik');
 Route::get('/about', [FrontendController::class, 'about'])->name('about');
 Route::get('/mud-vulcano', [FrontendController::class, 'mud_vulcano'])->name('mud-vulcano');
 Route::get('/mud-vulcano-detail/{slug}', [FrontendController::class, 'mudvulcano_detail']);
 Route::get('/post', [FrontendController::class, 'post'])->name('post');
 Route::get('/post-detail/{slug}', [FrontendController::class, 'postdetail']);
 Route::post('/search', [FrontendController::class, 'search']);
+Route::get('/filter/{id}', [FrontendController::class, 'filter']);
+//comment
+Route::post('/comment/{id}', [FrontendController::class, 'comment'])->name('comment.store');

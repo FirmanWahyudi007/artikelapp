@@ -2,6 +2,9 @@
 
 //translation.php
 return [
+    'access_not_allowed' => 'You are not allowed to access this page',
+    'profile' => 'Profile',
+    'profile_message' => 'Profile has been updated successfully',
     'back' => 'Back',
     'images' => 'Images',
     'dashboard' => 'Dashboard',

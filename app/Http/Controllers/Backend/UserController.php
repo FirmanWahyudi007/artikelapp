@@ -151,4 +151,24 @@ class UserController extends Controller
             return redirect()->route('users.index')->with('error', trans('translation.error_delete_message'));
         }
     }
+
+    public function settings()
+    {
+        $user = auth()->user();
+        return view('backend.users.profile', compact('user'));
+    }
+
+    //updateSettings
+    public function updateSettings(Request $request)
+    {
+        $user = User::find(auth()->user()->id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        if ($request->password) {
+            $user->password = bcrypt($request->password);
+        }
+        $user->save();
+
+        return redirect()->route('profile')->with('success', trans('translation.profile_message'));
+    }
 }

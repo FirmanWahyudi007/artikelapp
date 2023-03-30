@@ -20,11 +20,11 @@
         <section id="blog" class="blog">
             <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-                <div class="col-lg-5 aos-init aos-animate" data-aos="fade">
+                <div class="row posts-list mt-4">
                     <form action="/search" method="post">
                         @csrf
                         <div class="row gy-4">
-                            <div class="col-lg-6 form-group">
+                            <div class="col-lg-3 form-group">
                                 <input type="text" name="keyword" class="form-control" placeholder="Search"
                                     required="">
                             </div>
@@ -35,49 +35,71 @@
                             </div>
                         </div>
                     </form>
-                </div>
+                    <div class="sidebar mt-2">
+                        <div class="sidebar-item tags">
+                            {{-- <h3 class="sidebar-title">Tags</h3> --}}
+                            <ul class="mt-3">
+                                @foreach ($categories as $category)
+                                    <li>
+                                        <a href="/filter/{{ $category->id }}">{{ $category->name }}
+                                            ({{ $category->posts->count() }})
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                    {{-- @dd($posts) --}}
 
-                <div class="row gy-4 posts-list mt-4">
-                    @foreach ($posts as $data)
-                        <div class="col-xl-4 col-md-6">
-                            <div class="post-item position-relative h-100">
+                    @if (!isset($posts))
+                        <div class="section-header">
+                            <h1>Data is being processed by admin</h1>
+                        </div>
+                    @else
+                        @foreach ($posts as $data)
+                            <div class="col-xl-4 col-md-6">
+                                <div class="post-item position-relative h-100">
 
-                                <div class="post-img position-relative overflow-hidden">
-                                    <img src="{{ asset($data->thumbnail) }}" class="img-fluid" alt="">
-                                    <span class="post-date">{{ date('M y', strtotime($data->created_at)) }}</span>
-                                </div>
-
-                                <div class="post-content d-flex flex-column">
-
-                                    <h3 class="post-title">
-                                        {{ $data->title }}
-                                    </h3>
-
-                                    <div class="meta d-flex align-items-center">
-                                        <div class="d-flex align-items-center">
-                                            <i class="bi bi-person"></i> <span class="ps-2">{{ $data->user->name }}</span>
-                                        </div>
-                                        <span class="px-3 text-black-50">/</span>
-                                        <div class="d-flex align-items-center">
-                                            <i class="bi bi-folder2"></i> <span
-                                                class="ps-2">{{ $data->category->name }}</span>
-                                        </div>
+                                    <div class="post-img position-relative overflow-hidden">
+                                        <img src="{{ asset($data->thumbnail) }}" class="img-fluid" alt="">
+                                        <span class="post-date">{{ date('M y', strtotime($data->created_at)) }}</span>
                                     </div>
 
-                                    <p>
-                                        {!! substr(strip_tags($data->content), 0, 150) !!}
-                                    </p>
+                                    <div class="post-content d-flex flex-column">
 
-                                    <hr>
+                                        <h3 class="post-title">
+                                            {{ $data->title }}
+                                        </h3>
 
-                                    <a href="/post-detail/{{ $data->slug }}" class="readmore stretched-link"><span>Read
-                                            More</span><i class="bi bi-arrow-right"></i></a>
+                                        <div class="meta d-flex align-items-center">
+                                            <div class="d-flex align-items-center">
+                                                <i class="bi bi-person"></i> <span
+                                                    class="ps-2">{{ $data->user->name }}</span>
+                                            </div>
+                                            <span class="px-3 text-black-50">/</span>
+                                            <div class="d-flex align-items-center">
+                                                <i class="bi bi-folder2"></i> <span
+                                                    class="ps-2">{{ $data->category->name }}</span>
+                                            </div>
+                                        </div>
+
+                                        <p>
+                                            {!! substr(strip_tags($data->content), 0, 150) !!}
+                                        </p>
+
+                                        <hr>
+
+                                        <a href="/post-detail/{{ $data->slug }}"
+                                            class="readmore stretched-link"><span>Read
+                                                More</span><i class="bi bi-arrow-right"></i></a>
+
+                                    </div>
 
                                 </div>
+                            </div><!-- End post list item -->
+                        @endforeach
+                    @endif
 
-                            </div>
-                        </div><!-- End post list item -->
-                    @endforeach
                 </div><!-- End blog posts list -->
 
 
