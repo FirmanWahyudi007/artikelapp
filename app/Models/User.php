@@ -21,7 +21,11 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role'
+        'role',
+        'avatar',
+        'country',
+        'province',
+        'afiliasi',
     ];
 
     /**
@@ -46,5 +50,16 @@ class User extends Authenticatable
     public function posts()
     {
         return $this->hasMany(Post::class);
+    }
+
+    public function vulcanos()
+    {
+        return $this->hasMany(MudVulcano::class);
+    }
+
+    //getVulcanoCountAttribute
+    public function getVulcanoCountAttribute()
+    {
+        return $this->vulcanos()->count();
     }
 }

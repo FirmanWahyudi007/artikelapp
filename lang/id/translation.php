@@ -2,6 +2,9 @@
 
 //translation.php
 return [
+    'access_not_allowed' => 'Anda tidak diizinkan mengakses halaman ini',
+    'profile' => 'Profil',
+    'profile_message' => 'Profil berhasil diperbarui',
     'back' => 'Kembali',
     'images' => 'Gambar',
     'dashboard' => 'Dashboard',

@@ -33,7 +33,11 @@ class MudVulcanoController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $mud = MudVulcano::with('user')->get();
+            if (auth()->user()->role == 'admin') {
+                $mud = MudVulcano::with('user')->get();
+            } else {
+                $mud = MudVulcano::where('user_id', auth()->user()->id)->with('user')->get();
+            }
             return datatables()->of($mud)
                 ->addColumn('action', function ($mud) {
                     $button = '<a href="' . route('mud-vulcano.edit', $mud->id) . '" class="btn btn-primary btn-sm">Edit</a>';
@@ -88,7 +92,7 @@ class MudVulcanoController extends Controller
                 'name' => $request->name,
                 'slug' => Str::slug($request->name),
                 'content' => $request->content,
-                'user_id' => 1,
+                'user_id' => auth()->user()->id,
                 'address' => $request->address,
                 'latitude' => $request->latitude,
                 'longitude' => $request->longitude,

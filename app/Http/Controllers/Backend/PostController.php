@@ -33,7 +33,11 @@ class PostController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $posts = Post::with('category', 'user')->get();
+            if (auth()->user()->role == 'admin') {
+                $posts = Post::with('category', 'user')->get();
+            } else {
+                $posts = Post::with('category', 'user')->where('user_id', auth()->user()->id)->get();
+            }
             return datatables()->of($posts)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
@@ -95,7 +99,7 @@ class PostController extends Controller
         $post = new Post;
         $post->title = $request->title;
         $post->slug = Str::slug($request->title);
-        $post->user_id = 1;
+        $post->user_id = auth()->user()->id;
         $post->category_id = $request->category_id;
         $post->content = $request->content;
         $post->thumbnail = 'img/post/' . $new_name;

@@ -26,7 +26,7 @@
 
                     <div class="row gy-4 portfolio-container" data-aos="fade-up" data-aos-delay="200">
                         {{-- @dd($datas) --}}
-                        @if (isset($datas))
+                        @if (!isset($datas))
                             <div class="container" data-aos="fade-up">
                                 <div class="section-header">
                                     <h1>Data is being processed by admin</h1>
@@ -52,8 +52,17 @@
                                 </div><!-- End Projects Item -->
                             @endforeach
                         @endif
-                    </div><!-- End Projects Container -->
 
+                    </div><!-- End Projects Container -->
+                    <br>
+                    <hr>
+                    <br>
+                    <div class="d-flex flex-column align-items-center justify-content-center">
+                        <h2>Kontribusi Pengguna</h2>
+                        <div class="col-sm-6">
+                            <canvas id="chart"></canvas>
+                        </div>
+                    </div>
                 </div>
 
             </div>
@@ -61,3 +70,41 @@
 
     </main><!-- End #main -->
 @endsection
+@push('child-script')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <script>
+        const data = {
+            labels: {!! json_encode($users->pluck('name')) !!},
+            datasets: [{
+                label: 'Jumlah Gunung Lumpur',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: {!! json_encode($users->pluck('vulcanos_count')) !!}
+            }]
+        };
+
+        const config = {
+            type: 'bar',
+            data,
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                            stepSize: 1,
+                            callback: function(value, index, values) {
+                                return index % 2 === 0 ? value : '';
+                            }
+                        }
+                    }],
+                    //xAxes tampilkan 
+                }
+            }
+        };
+
+        var myChart = new Chart(
+            document.getElementById('chart'),
+            config
+        );
+    </script>
+@endpush
