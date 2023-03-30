@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\MudVulcano;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class FrontendController extends Controller
@@ -47,9 +48,14 @@ class FrontendController extends Controller
     public function mud_vulcano()
     {
         $mud_volcano = MudVulcano::orderBy('id', 'desc')->get();
+        // $user = User::withCount('vulcanos')->get();
+
+        //tampilkan user yang mempunyai jumlah count diatas 1
+        $user = User::withCount('vulcanos')->having('vulcanos_count', '>', 0)->get();
 
         return view('frontend.pages.mudvulcano.index', [
-            'datas' => $mud_volcano
+            'datas' => $mud_volcano,
+            'users' => $user
         ]);
     }
 
@@ -136,4 +142,14 @@ class FrontendController extends Controller
 
         return redirect()->back()->with('success', 'Comment successfully added');
     }
+
+    //statistik
+    // public function statistik(Request $request)
+    // {
+    //     if ($request->ajax()) {
+    //         $mud_volcano = MudVulcano::orderBy('id', 'desc')->with('user')->get();
+
+    //         return response()->json($mud_volcano);
+    //     }
+    // }
 }

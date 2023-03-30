@@ -57,6 +57,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
 Route::get('/lang/{locale}', [HomeController::class, 'lang'])->name('lang');
 
 Route::get('/', [FrontendController::class, 'index'])->name('home');
+Route::get('/statistik', [FrontendController::class, 'statistik'])->name('statistik');
 Route::get('/about', [FrontendController::class, 'about'])->name('about');
 Route::get('/mud-vulcano', [FrontendController::class, 'mud_vulcano'])->name('mud-vulcano');
 Route::get('/mud-vulcano-detail/{slug}', [FrontendController::class, 'mudvulcano_detail']);

@@ -51,4 +51,15 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post::class);
     }
+
+    public function vulcanos()
+    {
+        return $this->hasMany(MudVulcano::class);
+    }
+
+    //getVulcanoCountAttribute
+    public function getVulcanoCountAttribute()
+    {
+        return $this->vulcanos()->count();
+    }
 }
