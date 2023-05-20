@@ -21,7 +21,9 @@
                                 <th>@lang('translation.name')</th>
                                 <th>@lang('translation.email')</th>
                                 <th>@lang('translation.comment')</th>
-                                <th>@lang('translation.action')</th>
+                                @if (auth()->user()->role == 'penulis')
+                                    <th>@lang('translation.action')</th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -34,14 +36,16 @@
                                     <td>{{ $value->comment->nama }}</td>
                                     <td>{{ $value->comment->email }}</td>
                                     <td>{{ $value->comment->isi_komentar }}</td>
-                                    <td>
-                                        <form action="{{ route('comment.destroy', $value->id) }}" method="POST"
-                                            class="d-inline">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                        </form>
-                                    </td>
+                                    @if (auth()->user()->role == 'penulis')
+                                        <td>
+                                            <form action="{{ route('comment.destroy', $value->id) }}" method="POST"
+                                                class="d-inline">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                            </form>
+                                        </td>
+                                    @endif
                                 </tr>
                             @endforeach
                         </tbody>

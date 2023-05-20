@@ -114,19 +114,6 @@ class PostController extends Controller
         $post->tanggal_publish = now();
         $post->save();
 
-        // $post = [
-        //     'title' => $request->title,
-        //     'slug' => Str::slug($request->title),
-        //     'user_id' => 1,
-        //     'category_id' => $request->category_id,
-        //     'content' => ' $request->content',
-        //     'thumbnail' => ' $request->thumbnail',
-        //     'published' => 1,
-        //     'created_at' => now(),
-        //     'updated_at' => now(),
-        // ];
-        // Post::create($post);
-
         if ($post) {
             return redirect()->route('post.index')->with('success', trans('translation.success_message'));
         } else {

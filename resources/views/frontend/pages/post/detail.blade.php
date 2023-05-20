@@ -64,7 +64,7 @@
                                         </div>
                                         <div>
                                             <h5><a href="">{{ $detail->comment->nama }} -
-                                                    {{ $detail->comment->email }}</h5>
+                                                    {{ $detail->comment->email }}</a></h5>
                                             <time
                                                 datetime="2020-01-01">{{ date('M d, Y', strtotime($detail->comment->created_at)) }}</time>
                                             <p>
