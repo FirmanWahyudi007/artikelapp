@@ -2,6 +2,12 @@
 
 //translation.php
 return [
+    'actived_message' => 'Akun berhasil diaktifkan',
+    'inactive_message' => 'Akun berhasil dinonaktifkan',
+    'is_active_message' => 'Akun Anda belum aktif, silahkan hubungi admin',
+    'is_active' => 'Akun Anda berhasil dibuat, silahkan tunggu aktivasi dari admin',
+    'success_comment_delete_message' => 'Komentar berhasil dihapus',
+    'comment' => 'Komentar',
     'access_not_allowed' => 'Anda tidak diizinkan mengakses halaman ini',
     'profile' => 'Profil',
     'profile_message' => 'Profil berhasil diperbarui',
@@ -9,7 +15,7 @@ return [
     'images' => 'Gambar',
     'dashboard' => 'Dashboard',
     'category' => 'Kategori',
-    'users' => 'Pengguna',
+    'users' => 'Penulis',
     'mud-vulcano' => 'Gunung Lumpur',
     'mud-vulcano-images' => 'Gambar Gunung Lumpur',
     'post' => 'Postingan',

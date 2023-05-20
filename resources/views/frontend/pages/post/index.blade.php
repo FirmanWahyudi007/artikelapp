@@ -35,20 +35,6 @@
                             </div>
                         </div>
                     </form>
-                    <div class="sidebar mt-2">
-                        <div class="sidebar-item tags">
-                            {{-- <h3 class="sidebar-title">Tags</h3> --}}
-                            <ul class="mt-3">
-                                @foreach ($categories as $category)
-                                    <li>
-                                        <a href="/filter/{{ $category->id }}">{{ $category->name }}
-                                            ({{ $category->posts->count() }})
-                                        </a>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
                     {{-- @dd($posts) --}}
 
                     @if (!isset($posts))

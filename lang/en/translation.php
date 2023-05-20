@@ -2,6 +2,12 @@
 
 //translation.php
 return [
+    'actived_message' => 'Account has been activated',
+    'inactive_message' => 'Account has been inactivated',
+    'is_active_message' => 'Your account is not active, please contact admin',
+    'is_active' => 'Your account has been created, please wait for activation from the admin',
+    'success_comment_delete_message' => 'Comment has been deleted successfully',
+    'comment' => 'Comment',
     'access_not_allowed' => 'You are not allowed to access this page',
     'profile' => 'Profile',
     'profile_message' => 'Profile has been updated successfully',
@@ -9,7 +15,7 @@ return [
     'images' => 'Images',
     'dashboard' => 'Dashboard',
     'category' => 'Category',
-    'users' => 'Users',
+    'users' => 'Writer',
     'mud-vulcano' => 'Mud Vulcano',
     'mud-vulcano-images' => 'Mud Vulcano Images',
     'post' => 'Post',

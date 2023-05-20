@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Login &mdash; Mud Vulcano</title>
+    <title>Register &mdash; Mud Vulcano</title>
 
     <!-- General CSS Files -->
     <link rel="stylesheet" href="{{ asset('backend/assets/modules/bootstrap/css/bootstrap.min.css') }}">
@@ -58,13 +58,22 @@
                             </div>
 
                             <div class="card-body">
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li> {{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                                 <form method="POST" action="{{ route('register.store') }}" class="needs-validation"
                                     novalidate="">
                                     @csrf
                                     <div class="form-group">
                                         <label for="name">Name</label>
                                         <input id="name" type="text" class="form-control" name="name"
-                                            tabindex="1" required autofocus>
+                                            tabindex="1" required autofocus value="{{ old('name') }}">
                                         <div class="invalid-feedback">
                                             Please fill in your Name
                                         </div>
@@ -72,9 +81,17 @@
                                     <div class="form-group">
                                         <label for="email">Email</label>
                                         <input id="email" type="email" class="form-control" name="email"
-                                            tabindex="1" required autofocus>
+                                            tabindex="1" required autofocus value="{{ old('email') }}">
                                         <div class="invalid-feedback">
                                             Please fill in your email
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="username">Username</label>
+                                        <input id="username" type="text" class="form-control" name="username"
+                                            tabindex="1" required autofocus value="{{ old('username') }}">
+                                        <div class="invalid-feedback">
+                                            Please fill in your username
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -85,46 +102,15 @@
                                             Please fill in your password
                                         </div>
                                     </div>
-
-                                    <div class="form-divider">
-                                        Your Home
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group col-6">
-                                            <label>Country</label>
-                                            <select class="form-control selectric" name="country">
-                                                <option>Indonesia</option>
-                                                <option>Palestine</option>
-                                                <option>Syria</option>
-                                                <option>Malaysia</option>
-                                                <option>Thailand</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group col-6">
-                                            <label>Province</label>
-                                            <input id="province" type="text" class="form-control" name="province"
-                                                tabindex="1" required autofocus>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group col-6">
-                                            <label>City</label>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                        <div class="form-group col-6">
-                                            <label>Afiliasi</label>
-                                            <input id="province" type="text" class="form-control" name="afiliasi"
-                                                tabindex="1" required autofocus>
+                                    <div class="form-group">
+                                        <label for="password">Confirm Password</label>
+                                        <input id="password" type="password" class="form-control"
+                                            name="password_confirmation" tabindex="1" required autofocus>
+                                        <div class="invalid-feedback">
+                                            Please fill in your password
                                         </div>
                                     </div>
 
-                                    {{-- <div class="form-group">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" name="remember" class="custom-control-input"
-                                                tabindex="3" id="remember-me">
-                                            <label class="custom-control-label" for="remember-me">Remember Me</label>
-                                        </div>
-                                    </div> --}}
 
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">

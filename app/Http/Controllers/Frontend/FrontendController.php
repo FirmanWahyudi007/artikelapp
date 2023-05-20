@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Frontend;
 use App\Models\Post;
 use App\Models\Comment;
 use App\Models\Category;
-use App\Models\MudVulcano;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -30,13 +29,11 @@ class FrontendController extends Controller
 
     public function index()
     {
-        $get_data_mudvulcano = MudVulcano::orderBy('id', 'desc')->limit(3)->get();
 
-        $get_data_post = Post::with(['category', 'user'])->orderBy('id', 'desc')->where('published', 1)->limit(3)->get();
+        $get_data_post = Post::with([ 'user'])->orderBy('id', 'desc')->limit(3)->get();
 
         return view('frontend.pages.home', [
             'data_post' => $get_data_post,
-            'data_mudvulcano' => $get_data_mudvulcano
         ]);
     }
 
@@ -45,54 +42,27 @@ class FrontendController extends Controller
         return view('frontend.pages.about');
     }
 
-    public function mud_vulcano()
-    {
-        $mud_volcano = MudVulcano::orderBy('id', 'desc')->get();
-        // $user = User::withCount('vulcanos')->get();
+    
 
-        //tampilkan user yang mempunyai jumlah count diatas 1
-        $user = User::withCount('vulcanos')->having('vulcanos_count', '>', 0)->get();
-
-        return view('frontend.pages.mudvulcano.index', [
-            'datas' => $mud_volcano,
-            'users' => $user
-        ]);
-    }
-
-    public function mudvulcano_detail(string $slug)
-    {
-        $mud_vulcano_detail = MudVulcano::with(['images', 'user'])->where('slug', $slug)->first();
-
-        return view('frontend.pages.mudvulcano.detail', [
-            'detail' => $mud_vulcano_detail
-        ]);
-    }
 
     public function blog()
     {
         return view('frontend.pages.blog.index');
     }
 
-    private function getCategory()
-    {
-        $get_data_category = Category::with('posts')->get();
-
-        return $get_data_category;
-    }
 
     public function post()
     {
-        $get_data_post = Post::orderBy('id', 'desc')->with(['category', 'user'])->where('published', 1)->simplePaginate(9);
+        $get_data_post = Post::orderBy('id', 'desc')->simplePaginate(9);
 
         return view('frontend.pages.post.index', [
             'posts' => $get_data_post,
-            'categories' => $this->getCategory()
         ]);
     }
 
     public function postdetail(string $slug)
     {
-        $get_post_detail = Post::with(['category', 'user'])->where('slug', $slug)->with('comments.user', 'comments.replies')->first();
+        $get_post_detail = Post::with(['user'])->where('slug', $slug)->with('details.comment')->first();
         $recent_post = Post::orderBy('id', 'desc')->limit(3)->get();
         // return response()->json($get_post_detail);
 
@@ -117,15 +87,7 @@ class FrontendController extends Controller
         ]);
     }
 
-    public function filter(int $id)
-    {
-        $get_filter_data = Post::where('category_id', $id)->where('published', 1)->simplePaginate(9);
-        // return $get_filter_data;
-        return view('frontend.pages.post.index', [
-            'posts' => $get_filter_data,
-            'categories' => $this->getCategory()
-        ]);
-    }
+
 
     //comment
     public function comment(Request $request, $id)
@@ -135,21 +97,19 @@ class FrontendController extends Controller
         ]);
 
         $comment = new Comment();
-        $comment->user_id = auth()->user()->id;
-        $comment->post_id = $id;
-        $comment->body = $request->comment;
+        $comment->nama = $request->nama;
+        $comment->email = $request->email;
+        $comment->isi_komentar = $request->comment;
         $comment->save();
+
+        $post = Post::find($id);
+        $post->details()->create([
+            'comment_id' => $comment->id,
+        ]);
+
 
         return redirect()->back()->with('success', 'Comment successfully added');
     }
 
-    //statistik
-    // public function statistik(Request $request)
-    // {
-    //     if ($request->ajax()) {
-    //         $mud_volcano = MudVulcano::orderBy('id', 'desc')->with('user')->get();
 
-    //         return response()->json($mud_volcano);
-    //     }
-    // }
 }

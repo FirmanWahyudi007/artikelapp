@@ -34,15 +34,21 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        $credentials = $request->only('email', 'password');
-
+        if (filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
+            $credentials = $request->only('email', 'password');
+        } else {
+            $credentials = ['username' => $request->email, 'password' => $request->password];
+        }
+        
         if (Auth::attempt($credentials)) {
             // Authentication passed...
-            if (Auth::user()->role == 'admin') {
-                return redirect()->route('dashboard')->with('success', trans('translation.success_login_message'));
-            } else {
-                return redirect()->route('home')->with('success', trans('translation.success_login_message'));
+            if(auth()->user()->is_active == 0){
+                auth()->logout();
+                return redirect()->route('login')->with('error', trans('translation.is_active_message'));
+            }else{
+                return redirect()->route('post.index')->with('success', trans('translation.success_login_message'));
             }
+            
         }
 
         return redirect()->route('login')->with('error', trans('translation.email_or_password_wrong'));

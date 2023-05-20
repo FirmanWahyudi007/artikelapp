@@ -4,7 +4,7 @@
         <a href="{{ route('home') }}" class="logo d-flex align-items-center">
             <!-- Uncomment the line below if you also wish to use an image logo -->
             <!-- <img src="assets/img/logo.png" alt=""> -->
-            <h1>GunungLumpur</h1>
+            <h1>ArtikelAPP</h1>
         </a>
 
         <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
@@ -12,19 +12,10 @@
         <nav id="navbar" class="navbar">
             <ul>
                 <li><a href="{{ route('home') }}"
-                        class="{{ \Route::current()->getName() == 'home' ? 'active' : '' }}">Home</a></li>
-                <li><a href="{{ route('post') }}"
-                        class="{{ \Route::current()->getName() == 'post' ? 'active' : '' }}">Post</a></li>
-                <li class="dropdown"><a href="#"><span>Mud Vulcano</span> <i
-                            class="bi bi-chevron-down dropdown-indicator"></i></a>
-                    <ul>
-                        <li><a href="#">Chart</a></li>
-                        <li><a href="{{ route('mud-vulcano') }}">Data</a></li>
-                    </ul>
+                        class="{{ \Route::current()->getName() == 'home' ? 'active' : '' }}">Home</a>
                 </li>
-                <li>
-                    <a href="{{ route('about') }}"
-                        class="{{ \Route::current()->getName() == 'about' ? 'active' : '' }}">About</a>
+                <li><a href="{{ route('post') }}"
+                        class="{{ \Route::current()->getName() == 'post' ? 'active' : '' }}">Post</a>
                 </li>
                 @guest
                     <li>
@@ -35,7 +26,7 @@
                     <li class="dropdown"><a href="#"><span>{{ Auth::user()->name }}</span> <i
                                 class="bi bi-chevron-down dropdown-indicator"></i></a>
                         <ul>
-                            <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                            <li><a href="{{ route('post.index') }}">Post</a></li>
                             <li><a href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">Logout</a>

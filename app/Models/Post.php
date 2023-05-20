@@ -10,33 +10,23 @@ class Post extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title',
+        'judul',
         'slug',
         'thumbnail',
-        'content',
+        'isi_artikel',
         'user_id',
-        'category_id',
-        'published',
+        'tanggal_publish',
     ];
 
-    public function category()
-    {
-        return $this->belongsTo(Category::class);
-    }
+
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function setContentAttribute($value)
+    public function details()
     {
-        $this->attributes['content'] = $value;
-    }
-
-    //comments
-    public function comments()
-    {
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Detail::class);
     }
 }

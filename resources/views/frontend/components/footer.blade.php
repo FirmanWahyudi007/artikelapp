@@ -6,11 +6,11 @@
 
                 <div class="col-lg-4 col-md-6">
                     <div class="footer-info">
-                        <h3>GunungLumpur</h3>
+                        <h3>Arikel APP</h3>
                         <p>
-                            Eri Sitinjak<br>
-                            Jl. Kolonel Masturi no.288, Parongpong, Bandung Barat<br><br>
-                            <strong>Email:</strong> erysekolah@gmail.com<br>
+                            Firman Wahyudi<br>
+                            Politeknik Negeri Jember<br><br>
+                            <strong>Email:</strong> firmagetrich50@gmail.com<br>
                         </p>
                         <div class="social-links d-flex mt-3">
                             <a href="https://twitter.com/erygea" target="_blank" rel="noopener noreferrer"
@@ -32,7 +32,7 @@
     <div class="footer-legal text-center position-relative">
         <div class="container">
             <div class="copyright">
-                &copy; Copyright <strong><span>GunungLumpur</span></strong>. All Rights Reserved
+                &copy; Copyright <strong><span>ArtikelAPP</span></strong>. All Rights Reserved
             </div>
             <div class="credits">
                 <!-- All the links in the footer should remain intact. -->

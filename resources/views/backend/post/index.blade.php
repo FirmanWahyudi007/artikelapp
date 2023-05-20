@@ -7,9 +7,11 @@
             <div class="card">
                 <div class="card-header">
                     <h4>@lang('translation.post')</h4>
-                    <div class="card-header-action">
-                        <a href="{{ route('post.create') }}" class="btn btn-primary">@lang('translation.create')</a>
-                    </div>
+                    @if (auth()->user()->role == 'penulis')
+                        <div class="card-header-action">
+                            <a href="{{ route('post.create') }}" class="btn btn-primary">@lang('translation.create')</a>
+                        </div>
+                    @endif
                 </div>
                 <div class="card-body">
                     <table class="table table-striped" id="table-1">
@@ -19,23 +21,25 @@
                                     #
                                 </th>
                                 <th>@lang('translation.title')</th>
-                                <th>@lang('translation.category')</th>
                                 <th>@lang('translation.author')</th>
                                 <th>@lang('translation.created_at')</th>
                                 <th>@lang('translation.action')</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @foreach ($posts as $post)
-                                    <tr>
-                                        <td>
-                                            {{ $loop->iteration }}
-                                        </td>
-                                        <td>{{ $post->title }}</td>
-                                        <td>{{ $post->category->name }}</td>
-                                        <td>{{ $post->user->name }}</td>
-                                        <td>{{ $post->created_at }}</td>
-                                        <td>
+                            @foreach ($posts as $post)
+                                <tr>
+                                    <td>
+                                        {{ $loop->iteration }}
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('post.detailView', $post->slug) }}"
+                                            target="_blank">{{ $post->judul }}
+                                    </td>
+                                    <td>{{ $post->user->name }}</td>
+                                    <td>{{ $post->created_at->format('d F Y ') }}</td>
+                                    <td>
+                                        @if (auth()->user()->role == 'penulis')
                                             <a href="{{ route('post.edit', $post->id) }}" class="btn btn-primary">Edit</a>
                                             <form action="{{ route('post.destroy', $post->id) }}" method="POST"
                                                 class="d-inline">
@@ -43,9 +47,12 @@
                                                 @method('delete')
                                                 <button type="submit" class="btn btn-danger">Delete</button>
                                             </form>
-                                        </td>
-                                    </tr>
-                                @endforeach --}}
+                                        @endif
+                                        <a href="{{ route('comment.index', $post->id) }}"
+                                            class="btn btn-secondary">Komentar</a>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -56,39 +63,7 @@
 @section('script-extra')
     <script>
         $(document).ready(function() {
-            $('#table-1').DataTable({
-                processing: true,
-                serverSide: true,
-                ajax: "{{ route('post.index') }}",
-                columns: [{
-                        data: 'DT_RowIndex',
-                        name: 'DT_RowIndex'
-                    },
-                    {
-                        data: 'title',
-                        name: 'title'
-                    },
-                    {
-                        data: 'category.name',
-                        name: 'category.name'
-                    },
-                    {
-                        data: 'user.name',
-                        name: 'user.name'
-                    },
-                    {
-                        data: 'created_at',
-                        name: 'created_at',
-                        render: function(data) {
-                            return moment(data).format('DD MMMM YYYY');
-                        }
-                    },
-                    {
-                        data: 'action',
-                        name: 'action'
-                    },
-                ]
-            });
+            $('#table-1').DataTable();
         });
     </script>
 

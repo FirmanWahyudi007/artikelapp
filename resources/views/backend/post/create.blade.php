@@ -22,21 +22,8 @@
                         <div class="form-group row mb-4">
                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">@lang('translation.title')</label>
                             <div class="col-sm-12 col-md-7">
-                                <input type="text" class="form-control" name="title" value="{{ $post->title ?? '' }}"
+                                <input type="text" class="form-control" name="title" value="{{ $post->judul ?? '' }}"
                                     required>
-                            </div>
-                        </div>
-                        <div class="form-group row mb-4">
-                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">@lang('translation.category')</label>
-                            <div class="col-sm-12 col-md-7">
-                                <select class="form-control selectric" name="category_id" required>
-                                    <option value="">@lang('translation.select_category')</option>
-                                    @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}"
-                                            {{ isset($post) && $post->category_id == $category->id ? 'selected' : '' }}>
-                                            {{ $category->name }}</option>
-                                    @endforeach
-                                </select>
                             </div>
                         </div>
                         <div class="form-group row mb-4">
@@ -49,7 +36,7 @@
                         <div class="form-group row mb-4">
                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">@lang('translation.content')</label>
                             <div class="col-sm-12 col-md-7">
-                                <textarea class="summernote" name="content">{!! $post->content ?? '' !!}</textarea>
+                                <textarea class="summernote" name="content">{!! $post->isi_artikel ?? '' !!}</textarea>
                             </div>
                         </div>
                         <div class="form-group row mb-4">

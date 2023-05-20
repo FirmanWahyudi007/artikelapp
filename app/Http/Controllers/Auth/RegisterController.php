@@ -35,21 +35,22 @@ class RegisterController extends Controller
     //store
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required|min:3|max:255',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:8|max:255|confirmed',
+            'username' => 'required|min:3|max:255|unique:users',
+        ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
-            'country' => $request->country,
-            'province' => $request->province,
-            'city' => $request->city,
-            'afiliasi' => $request->afiliasi,
+            'username' => $request->username,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
 
-        auth()->login($user);
-
-        return redirect()->to('/');
+        return redirect()->route('login')->with('success', trans('translation.is_active'));
     }
 }

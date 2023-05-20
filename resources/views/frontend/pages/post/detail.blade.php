@@ -30,7 +30,7 @@
                                 <img src="{{ asset($detail_post->thumbnail) }}" alt="" class="img-fluid">
                             </div>
 
-                            <h2 class="title">{{ $detail_post->title }}</h2>
+                            <h2 class="title">{{ $detail_post->judul }}</h2>
 
                             <div class="meta-top">
                                 <ul>
@@ -46,66 +46,60 @@
                             </div><!-- End meta top -->
 
                             <div class="content">
-                                {!! $detail_post->content !!}
+                                {!! $detail_post->isi_artikel !!}
                             </div><!-- End post content -->
-
-                            <div class="meta-bottom">
-                                <i class="bi bi-folder"></i>
-                                <ul class="cats">
-                                    <li>{{ $detail_post->category->name }}</li>
-                                </ul>
-                            </div><!-- End meta bottom -->
 
                         </article>
 
                         <div class="comments">
 
-                            <h4 class="comments-count">{{ $detail_post->comments->count() }} Comments</h4>
+                            <h4 class="comments-count">{{ $detail_post->details->count() }} Comments</h4>
 
-
-                            @foreach ($detail_post->comments as $key => $comment)
-                                @if ($comment->parent_id == null)
-                                    <div id="comment-{{ $key }}" class="comment">
-                                        <div class="d-flex">
-                                            <div class="comment-img"><img
-                                                    src="{{ asset('backend/assets/img/avatar/avatar-1.png') }}"
-                                                    alt=""></div>
-                                            <div>
-                                                <h5><a href="">{{ $comment->user->name }}</a></h5>
-                                                <time
-                                                    datetime="2020-01-01">{{ date('M d, Y', strtotime($comment->created_at)) }}</time>
-                                                <p>
-                                                    {{ $comment->body }}
-                                                </p>
-                                            </div>
+                            {{-- {{ dd($detail_post->details) }} --}}
+                            @foreach ($detail_post->details as $key => $detail)
+                                <div class="comment">
+                                    <div class="d-flex">
+                                        <div class="comment-img"><img
+                                                src="{{ asset('assets/frontend/img/blog/blog-1.jpg') }}" alt="">
+                                        </div>
+                                        <div>
+                                            <h5><a href="">{{ $detail->comment->nama }} -
+                                                    {{ $detail->comment->email }}</h5>
+                                            <time
+                                                datetime="2020-01-01">{{ date('M d, Y', strtotime($detail->comment->created_at)) }}</time>
+                                            <p>
+                                                {{ $detail->comment->isi_komentar }}
+                                            </p>
                                         </div>
                                     </div>
-                                @endif
+                                </div><!-- End comment #1 -->
                             @endforeach
-                            @if (auth()->user()->name ?? null)
-                                <div class="reply-form">
+                            <div class="reply-form">
 
-                                    <h4>Leave a Reply</h4>
-                                    <p>Send yours comment</p>
-                                    <form action="{{ route('comment.store', $detail_post->id) }}" method="post">
-                                        @csrf
-                                        <div class="row">
-                                            <div class="col form-group">
-                                                <textarea name="comment" class="form-control" placeholder="Your Comment*"></textarea>
-                                            </div>
+                                <h4>Leave a Reply</h4>
+                                <p>Send yours comment</p>
+                                <form action="{{ route('comment.store', $detail_post->id) }}" method="post">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col form-group">
+                                            <input type="text" name="nama" class="form-control"
+                                                placeholder="Your Name*">
                                         </div>
-                                        <button type="submit" class="btn btn-primary">Post Comment</button>
+                                        <div class="col form-group">
+                                            <input type="email" name="email" class="form-control"
+                                                placeholder="Your Email*">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col form-group">
+                                            <textarea name="comment" class="form-control" placeholder="Your Comment*"></textarea>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Post Comment</button>
 
-                                    </form>
+                                </form>
 
-                                </div>
-                            @else
-                                <div class="reply-form">
-                                    <h4>Silahkan melakukan <a href="{{ route('login.index') }}">Login</a> terlebih
-                                        dahulu!!!
-                                    </h4>
-                                </div>
-                            @endif
+                            </div>
 
                         </div><!-- End blog comments -->
 
@@ -123,7 +117,7 @@
                                         <div class="post-item mt-3">
                                             <img src="{{ asset($post->thumbnail) }}" alt="">
                                             <div>
-                                                <h4><a href="/post-detail/{{ $post->slug }}">{{ $post->title }}</a>
+                                                <h4><a href="/post-detail/{{ $post->slug }}">{{ $post->judul }}</a>
                                                 </h4>
                                                 <time
                                                     datetime="2020-01-01">{{ date('M d, y', strtotime($detail_post->created_at)) }}</time>

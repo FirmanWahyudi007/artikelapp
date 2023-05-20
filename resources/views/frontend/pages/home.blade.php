@@ -7,20 +7,6 @@
 @section('content')
     @include('frontend.components.hero')
     <main id="main">
-
-        <!-- ======= Get Started vidio Section mud-vulcano ======= -->
-        <section id="get-started" class="get-started section-bg">
-            <div class="container">
-                <div class="card-item row p-2">
-                    <div class="plyr__video-embed" id="player">
-                        <iframe src="https://www.youtube.com/embed/FTdTGDqaC4k?autoplay=1&mute=1" allowfullscreen
-                            allowtransparency></iframe>
-                    </div>
-                </div>
-
-            </div>
-        </section><!-- End Get Started Section -->
-
         <!-- ======= Recent Posts Section ======= -->
         <section id="recent-blog-posts" class="recent-blog-posts">
             <div class="container" data-aos="fade-up"">
@@ -52,11 +38,6 @@
                                         <div class="d-flex align-items-center">
                                             <i class="bi bi-person"></i> <span class="ps-2">{{ $data->user->name }}</span>
                                         </div>
-                                        <span class="px-3 text-black-50">/</span>
-                                        <div class="d-flex align-items-center">
-                                            <i class="bi bi-folder2"></i> <span
-                                                class="ps-2">{{ $data->category->name }}</span>
-                                        </div>
                                     </div>
 
                                     <hr>
@@ -73,44 +54,6 @@
 
             </div>
         </section>
-
-        <section id="projects" class="projects">
-            <div class="container" data-aos="fade-up">
-
-                @if (isset($data_mudvulcano))
-                @else
-                    <div class=" section-header">
-                        <h2>New Mud Vulcano</h2>
-                    </div>
-                @endif
-
-                <div class="portfolio-isotope" data-portfolio-filter="*" data-portfolio-layout="masonry"
-                    data-portfolio-sort="original-order">
-
-
-                    <div class="row gy-4 portfolio-container" data-aos="fade-up" data-aos-delay="200">
-                        @foreach ($data_mudvulcano as $data)
-                            <div class="col-lg-4 col-md-6 portfolio-item filter-remodeling">
-                                <div class="portfolio-content h-100">
-                                    <img src="{{ asset($data->thumbnail) }}" class="img-fluid" alt="">
-                                    <div class="portfolio-info">
-                                        <h4>{{ $data->name }}</h4>
-                                        <p>{{ $data->name }}</p>
-                                        <a href="{{ asset($data->thumbnail) }}"></a>
-                                        <a href="/mud-vulcano-detail/{{ $data->slug }}"
-                                            title="Detail {{ $data->name }}" class="details-link"><i
-                                                class="bi bi-link-45deg"></i></a>
-
-                                    </div>
-                                </div>
-                            </div><!-- End Projects Item -->
-                        @endforeach
-                    </div><!-- End Projects Container -->
-
-                </div>
-
-            </div>
-        </section><!-- End Our Projects Section -->
         <!-- End Recent Blog Posts Section -->
     </main><!-- End #main -->
 @endsection

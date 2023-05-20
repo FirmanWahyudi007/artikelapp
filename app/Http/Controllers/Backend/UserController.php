@@ -30,24 +30,8 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->ajax()) {
-            $users = User::all();
-            return datatables()->of($users)
-                ->addIndexColumn()
-                ->addColumn('action', function ($row) {
-                    $btn = '<a href="' . route('users.edit', $row->id) . '" class="edit btn btn-primary btn-sm">Edit</a>';
-                    //delete with form
-                    $btn .= '<form action="' . route('users.destroy', $row->id) . '" method="POST" class="d-inline">
-                                ' . csrf_field() . '
-                                ' . method_field('DELETE') . '
-                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm(`Anda Yakin ?`)">' . trans('translation.delete') . '</button>
-                            </form>';
-                    return $btn;
-                })
-                ->rawColumns(['action'])
-                ->make(true);
-        }
-        return view('backend.users.index');
+        $users = User::where('role', '!=', 'admin')->orderBy('id', 'desc')->get();
+        return view('backend.users.index', compact('users'));
     }
 
     /**
@@ -170,5 +154,25 @@ class UserController extends Controller
         $user->save();
 
         return redirect()->route('profile')->with('success', trans('translation.profile_message'));
+    }
+
+    //active
+    public function active($id)
+    {
+        $user = User::find($id);
+        $user->is_active = 1;
+        $user->save();
+
+        return redirect()->back()->with('success', trans('translation.actived_message'));
+    }
+
+    //inactive
+    public function inactive($id)
+    {
+        $user = User::find($id);
+        $user->is_active = 0;
+        $user->save();
+
+        return redirect()->back()->with('success', trans('translation.inactive_message'));
     }
 }

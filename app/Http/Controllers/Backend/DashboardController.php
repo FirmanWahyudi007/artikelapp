@@ -30,15 +30,7 @@ class DashboardController extends Controller
     public function index()
     {
         //count category
-        $user = User::count();
-        $category = Category::count();
-        if (auth()->user()->role == 'admin') {
-            $post = Post::count();
-            $vulcano = MudVulcano::count();
-        } else {
-            $post = Post::where('user_id', auth()->user()->id)->count();
-            $vulcano = MudVulcano::where('user_id', auth()->user()->id)->count();
-        }
-        return view('backend.dashboard', compact('category', 'post', 'user', 'vulcano'));
+        $post = Post::with('user')->get();
+        return view('backend.dashboard', compact( 'post'));
     }
 }

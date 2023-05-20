@@ -15,14 +15,10 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
-            $table->integer('post_id');
-            $table->text('body');
-            $table->integer('likes')->default(0);
-            $table->integer('dislikes')->default(0);
-            $table->integer('parent_id')->nullable();
+            $table->string('nama', 50);
+            $table->string('email', 30);
+            $table->text('isi_komentar');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

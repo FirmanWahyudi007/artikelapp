@@ -31,8 +31,8 @@
                                 <select class="form-control selectric" name="role">
                                     <option value="admin" {{ isset($user) && $user->role == 'admin' ? 'selected' : '' }}>
                                         Admin</option>
-                                    <option value="user" {{ isset($user) && $user->role == 'user' ? 'selected' : '' }}>
-                                        User</option>
+                                    <option value="user" {{ isset($user) && $user->role == 'penulis' ? 'selected' : '' }}>
+                                        Penulis</option>
                                 </select>
                             </div>
                         </div>
